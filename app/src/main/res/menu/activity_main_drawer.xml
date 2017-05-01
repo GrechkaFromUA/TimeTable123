@@ -1,35 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:checked="true"
+            android:id="@+id/nav_main"
+            android:icon="@drawable/home"
+            android:title="@string/title_main" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
-        <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/settings"
+            android:title="@string/title_settings" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="@string/title_main_settings">
         <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_time"
+                    android:icon="@drawable/clock"
+                    android:title="@string/title_time" />
+                <item
+                    android:id="@+id/nav_subjects"
+                    android:icon="@drawable/list1"
+                    android:title="@string/title_subjects" />
+                <item
+                    android:id="@+id/nav_teachers"
+                    android:icon="@drawable/user"
+                    android:title="@string/title_teachers" />
+                <item
+                    android:id="@+id/nav_buildings"
+                    android:icon="@drawable/bank"
+                    android:title="@string/title_buildings" />
+                <item
+                    android:id="@+id/nav_lessons_types"
+                    android:icon="@drawable/lesson"
+                    android:title="@string/title_lessons_type" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="@string/title_display"
+        android:layout_marginBottom="45dp">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_two_weeks"
+                    android:title="@string/title_two_weeks"
+                    app:actionLayout="@layout/switch_activity"
+                    />
+
+                <item
+                    android:id="@+id/nav_first_day"
+
+
+                    android:title="@string/title_firstday" />
+            </group>
         </menu>
     </item>
 
