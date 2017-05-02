@@ -56,6 +56,7 @@ public class TeachersFragment extends Fragment {
             Log.d("mLog","0 rows");
 
         cursor.close();
+        //test
 
 
 
