@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import maximprytyka.com.timetable.Fragmets.ExampleFragment;
+import maximprytyka.com.timetable.Fragmets.TeachersFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -88,7 +89,7 @@ public class MainActivity extends AppCompatActivity
            // fm.beginTransaction().replace(R.id.content_frame, new SubjectsFragment()).commit();
             setTitle(getString(R.string.title_subjects));
         } else if (id == R.id.nav_teachers) {
-           // fm.beginTransaction().replace(R.id.content_frame, new TeachersFragment()).commit();
+            fm.beginTransaction().replace(R.id.content_frame, new TeachersFragment()).commit();
             setTitle(getString(R.string.title_teachers));
         } else if (id == R.id.nav_buildings) {
            // fm.beginTransaction().replace(R.id.content_frame, new BuildingsFragment()).commit();
