@@ -4,7 +4,7 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="action_settings">Настрйоки</string>
+    <string name="action_settings">Очистить все</string>
 
     <string name="title_main">Главная</string>
     <string name="title_settings">Настройки</string>
@@ -18,4 +18,14 @@
     <string name="title_two_weeks">Показывать две недели</string>
     <string name="title_firstday">Первый день семестра</string>
     <string name="timetable">Расписание</string>
+
+    <string name="add_button">Добавить</string>
+    <string name="success_add">Успешно добавлено</string>
+    <string name="error_add">Пожалуйста заполните пустые поля</string>
+    <string name="error_same_value">Заданое значение уже существует</string>
+
+    <string name="alert_add">Добавить</string>
+    <string name="alert_cancel">Отменить</string>
+    <string name="alert_subjects">Введите название предмета</string>
+
 </resources>

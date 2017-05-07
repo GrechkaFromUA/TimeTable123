@@ -11,17 +11,12 @@ import android.support.annotation.Nullable;
 
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.view.menu.ActionMenuItem;
-import android.support.v7.widget.PopupMenu;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -30,16 +25,15 @@ import maximprytyka.com.timetable.MethodHelper;
 import maximprytyka.com.timetable.R;
 
 import static maximprytyka.com.timetable.DBHelper.KEY_VALUE;
-import static maximprytyka.com.timetable.R.*;
 
 
-public class TeachersFragment extends Fragment{
+public class BuildsFragment extends Fragment{
     String var;
     private ListView lv;
     ArrayList<String> values = new ArrayList<>();
     //SQlite Components
     DBHelper dbHelper;
-    final String table = DBHelper.TABLE_TEACHERS;
+    final String table = DBHelper.TABLE_BUILDINGS;
     SQLiteDatabase db;
 
 
@@ -50,14 +44,14 @@ public class TeachersFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 
-        View v = inflater.inflate(layout.fragment_teachers,container,false);
+        View v = inflater.inflate(R.layout.fragment_builds,container,false);
 
         final FragmentManager fm = getFragmentManager();
 
 
-        final FloatingActionButton fab = (FloatingActionButton) v.findViewById(id.fab_tea);
+        final FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.fab_tea);
         fab.bringToFront();
-        fab.setImageDrawable(ContextCompat.getDrawable(getActivity(), drawable.plus));
+        fab.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.plus));
         fab.setClickable(true);
 
 
@@ -65,7 +59,7 @@ public class TeachersFragment extends Fragment{
         db = dbHelper.getWritableDatabase();
         db.execSQL("create table if not exists "+table+" ("+DBHelper.KEY_ID+" integer primary key,"+KEY_VALUE+" text)");
 
-        lv = (ListView) v.findViewById(id.listView);
+        lv = (ListView) v.findViewById(R.id.listView);
 
 
         final MethodHelper mh = new MethodHelper();
@@ -94,15 +88,6 @@ public class TeachersFragment extends Fragment{
 
 
 
-
-
-
-
-
-
-
-
-
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -119,16 +104,10 @@ public class TeachersFragment extends Fragment{
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
-                    mh.showPopupMenu(view,getActivity(),db,values,adapter,table);
+                mh.showPopupMenu(view,getActivity(),db,values,adapter,table);
                 return false;
             }
         });
-
-
-
-
-
-
 
         return v;
     }
