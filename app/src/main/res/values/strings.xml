@@ -4,8 +4,8 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="category">Категория</string>
-    <string name="action_clear_all_done">успешно очищена</string>
+
+    <string name="action_clear_all_done">Успешно очищено</string>
     <string name="action_clear_all">Очистить все</string>
     <string name="action_exit">Выход</string>
 

@@ -120,7 +120,6 @@ public class SubjectsFragment extends Fragment{
 
 
 
-
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         // Do something that differs the Activity's menu here
@@ -131,9 +130,7 @@ public class SubjectsFragment extends Fragment{
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.clear_all:
-
                 mh.cleareTable(db,table,getActivity(),values,adapter);
-
                 return true;
             case R.id.exit:
                 //Реалізовано в MainActivity
@@ -144,8 +141,6 @@ public class SubjectsFragment extends Fragment{
 
         return false;
     }
-
-
 
 
 
