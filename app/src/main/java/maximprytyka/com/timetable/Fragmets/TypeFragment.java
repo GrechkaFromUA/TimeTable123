@@ -11,11 +11,15 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -42,17 +46,17 @@ public class TypeFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-
         View v = inflater.inflate(R.layout.fragment_type,container,false);
 
-        final FragmentManager fm = getFragmentManager();
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
 
+        final FragmentManager fm = getFragmentManager();
 
         final FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.fab_tea);
         fab.bringToFront();
         fab.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.plus));
         fab.setClickable(true);
-
 
         dbHelper = new DBHelper(getActivity());
         db = dbHelper.getWritableDatabase();
@@ -60,19 +64,9 @@ public class TypeFragment extends Fragment{
 
         lv = (ListView) v.findViewById(R.id.listView);
 
-
         final MethodHelper mh = new MethodHelper();
 
-
-
-
-
-
-
-
         //put From DB
-
-
 
         values =   mh.readFromDB(values,db,table);
 
@@ -82,11 +76,6 @@ public class TypeFragment extends Fragment{
 
         lv.setAdapter(adapter);
 
-
-
-
-
-
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -95,8 +84,6 @@ public class TypeFragment extends Fragment{
 
             }
         });
-
-
 
 
         lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -113,9 +100,27 @@ public class TypeFragment extends Fragment{
 
 
 
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        // Do something that differs the Activity's menu here
+        super.onCreateOptionsMenu(menu, inflater);
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.clear_all:
+                Toast.makeText(getActivity(),R.string.action_clear_all_done, Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.exit:
+                //Реалізовано в MainActivity
+                return false;
+            default:
+                break;
+        }
 
-
+        return false;
+    }
 
 
 

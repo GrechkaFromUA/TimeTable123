@@ -4,7 +4,9 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="action_settings">Очистить все</string>
+    <string name="action_clear_all">Очистить все</string>
+    <string name="action_clear_all_done">Успешно очищено</string>
+    <string name="action_exit">Выход</string>
 
     <string name="title_main">Главная</string>
     <string name="title_settings">Настройки</string>
@@ -27,5 +29,7 @@
     <string name="alert_add">Добавить</string>
     <string name="alert_cancel">Отменить</string>
     <string name="alert_subjects">Введите название предмета</string>
+
+
 
 </resources>
