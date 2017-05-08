@@ -12,11 +12,15 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -35,7 +39,7 @@ public class SubjectsFragment extends Fragment{
     DBHelper dbHelper;
     final String table = DBHelper.TABLE_SUB;
     SQLiteDatabase db;
-
+    MethodHelper mh;
 
     ArrayAdapter<String> adapter;
     @TargetApi(Build.VERSION_CODES.M)
@@ -48,6 +52,8 @@ public class SubjectsFragment extends Fragment{
 
         final FragmentManager fm = getFragmentManager();
 
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
 
         final FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.fab_tea);
         fab.bringToFront();
@@ -62,7 +68,7 @@ public class SubjectsFragment extends Fragment{
         lv = (ListView) v.findViewById(R.id.listView);
 
 
-        final MethodHelper mh = new MethodHelper();
+         mh = new MethodHelper();
 
 
 
@@ -115,7 +121,29 @@ public class SubjectsFragment extends Fragment{
 
 
 
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        // Do something that differs the Activity's menu here
+        super.onCreateOptionsMenu(menu, inflater);
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.clear_all:
+
+                mh.cleareTable(db,table,getActivity(),values,adapter);
+
+                return true;
+            case R.id.exit:
+                //Реалізовано в MainActivity
+                return false;
+            default:
+                break;
+        }
+
+        return false;
+    }
 
 
 

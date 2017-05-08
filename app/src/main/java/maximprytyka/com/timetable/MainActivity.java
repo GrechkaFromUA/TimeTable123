@@ -2,10 +2,7 @@ package maximprytyka.com.timetable;
 
 import android.app.FragmentManager;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.SwitchCompat;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -14,11 +11,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Switch;
+import android.widget.Toast;
 
 import maximprytyka.com.timetable.Fragmets.BuildsFragment;
 import maximprytyka.com.timetable.Fragmets.ExampleFragment;
-//import maximprytyka.com.timetable.Fragmets.SubjectsFragment;
+import maximprytyka.com.timetable.Fragmets.SubjectsFragment;
 import maximprytyka.com.timetable.Fragmets.TeachersFragment;
 import maximprytyka.com.timetable.Fragmets.TypeFragment;
 
@@ -68,7 +65,7 @@ public class MainActivity extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.clear_all:
-                // Реалізація в фрагменті
+
                 return false;
             case R.id.exit:
                 android.os.Process.killProcess(android.os.Process.myPid());

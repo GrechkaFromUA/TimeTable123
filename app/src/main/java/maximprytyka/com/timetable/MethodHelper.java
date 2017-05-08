@@ -121,7 +121,7 @@ public class MethodHelper {
 
 
 
-    public void newAdd(EditText et, AlertDialog alert, ArrayList<String> values, Activity ac, SQLiteDatabase db, String table, ArrayAdapter<String> adapter){
+    private void newAdd(EditText et, AlertDialog alert, ArrayList<String> values, Activity ac, SQLiteDatabase db, String table, ArrayAdapter<String> adapter){
         if (!et.getText().toString().isEmpty() && !values.contains(et.getText().toString())) {
             Toast.makeText(ac,
                     R.string.success_add,
@@ -171,7 +171,7 @@ public class MethodHelper {
                             case R.id.del:
 
 
-                                db.delete(DBHelper.TABLE_TEACHERS,"value=?", new String[]{var});
+                                db.delete(table,"value=?", new String[]{var});
 
 
 
@@ -271,6 +271,25 @@ public class MethodHelper {
 
             alert.dismiss();
         }else Toast.makeText(ac, R.string.error_add,Toast.LENGTH_SHORT).show();
+    }
+
+
+
+
+    public void cleareTable(SQLiteDatabase db,String table,Activity ac,ArrayList<String> values,ArrayAdapter<String> adapter){
+
+
+        db.delete(table,null,null);
+        values.clear();
+        adapter.notifyDataSetChanged();
+
+
+
+
+        Toast.makeText(ac,R.string.action_clear_all, Toast.LENGTH_SHORT).show();
+
+
+
     }
 
 

@@ -15,6 +15,8 @@ import android.support.v7.view.menu.ActionMenuItem;
 import android.support.v7.widget.PopupMenu;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,13 +36,14 @@ import static maximprytyka.com.timetable.R.*;
 
 
 public class TeachersFragment extends Fragment{
-    String var;
+
     private ListView lv;
     ArrayList<String> values = new ArrayList<>();
-    //SQlite Components
+
     DBHelper dbHelper;
     final String table = DBHelper.TABLE_TEACHERS;
     SQLiteDatabase db;
+    MethodHelper mh;
 
 
     ArrayAdapter<String> adapter;
@@ -54,6 +57,8 @@ public class TeachersFragment extends Fragment{
 
         final FragmentManager fm = getFragmentManager();
 
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
 
         final FloatingActionButton fab = (FloatingActionButton) v.findViewById(id.fab_tea);
         fab.bringToFront();
@@ -68,7 +73,7 @@ public class TeachersFragment extends Fragment{
         lv = (ListView) v.findViewById(id.listView);
 
 
-        final MethodHelper mh = new MethodHelper();
+       mh = new MethodHelper();
 
 
 
@@ -137,6 +142,28 @@ public class TeachersFragment extends Fragment{
 
 
 
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        // Do something that differs the Activity's menu here
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.clear_all:
+                mh.cleareTable(db,table,getActivity(),values,adapter);
+                return true;
+            case R.id.exit:
+                //Реалізовано в MainActivity
+                return false;
+            default:
+                break;
+        }
+
+        return false;
+    }
 
 
 

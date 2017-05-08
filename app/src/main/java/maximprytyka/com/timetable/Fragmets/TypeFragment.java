@@ -38,6 +38,7 @@ public class TypeFragment extends Fragment{
     DBHelper dbHelper;
     final String table = DBHelper.TABLE_TYPE;
     SQLiteDatabase db;
+    MethodHelper mh;
 
 
     ArrayAdapter<String> adapter;
@@ -64,7 +65,7 @@ public class TypeFragment extends Fragment{
 
         lv = (ListView) v.findViewById(R.id.listView);
 
-        final MethodHelper mh = new MethodHelper();
+        mh = new MethodHelper();
 
         //put From DB
 
@@ -110,7 +111,7 @@ public class TypeFragment extends Fragment{
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.clear_all:
-                Toast.makeText(getActivity(),R.string.action_clear_all_done, Toast.LENGTH_SHORT).show();
+                    mh.cleareTable(db,table,getActivity(),values,adapter);
                 return true;
             case R.id.exit:
                 //Реалізовано в MainActivity
