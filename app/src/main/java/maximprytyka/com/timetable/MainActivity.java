@@ -18,7 +18,7 @@ import android.widget.Switch;
 
 import maximprytyka.com.timetable.Fragmets.BuildsFragment;
 import maximprytyka.com.timetable.Fragmets.ExampleFragment;
-import maximprytyka.com.timetable.Fragmets.SubjectsFragment;
+//import maximprytyka.com.timetable.Fragmets.SubjectsFragment;
 import maximprytyka.com.timetable.Fragmets.TeachersFragment;
 import maximprytyka.com.timetable.Fragmets.TypeFragment;
 
@@ -53,6 +53,10 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    //////////////////////////////
+    ///////Вспливаюче меню////////
+    //////////////////////////////
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -62,18 +66,22 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (item.getItemId()) {
+            case R.id.clear_all:
+                // Реалізація в фрагменті
+                return false;
+            case R.id.exit:
+                android.os.Process.killProcess(android.os.Process.myPid());
+                return true;
+            default:
+                break;
         }
-
-        return super.onOptionsItemSelected(item);
+        return false;
     }
+
+    ///////////////////////////////
+    ///Кінець вспливаючого меню///
+    //////////////////////////////
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
