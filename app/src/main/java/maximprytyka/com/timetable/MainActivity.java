@@ -11,12 +11,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import maximprytyka.com.timetable.Fragmets.BuildsFragment;
 import maximprytyka.com.timetable.Fragmets.ExampleFragment;
 import maximprytyka.com.timetable.Fragmets.SubjectsFragment;
 import maximprytyka.com.timetable.Fragmets.TeachersFragment;
+import maximprytyka.com.timetable.Fragmets.TimeAddFragment;
+import maximprytyka.com.timetable.Fragmets.TimeFragment;
 import maximprytyka.com.timetable.Fragmets.TypeFragment;
 
 public class MainActivity extends AppCompatActivity
@@ -100,7 +101,7 @@ public class MainActivity extends AppCompatActivity
             setTitle(getString(R.string.title_settings));
             drawer.closeDrawer(GravityCompat.START);
         } else if (id == R.id.nav_time) {
-          //  fm.beginTransaction().replace(R.id.content_frame, new TimeFragment()).commit();
+            fm.beginTransaction().replace(R.id.content_frame, new TimeFragment()).commit();
             setTitle(getString(R.string.title_time));
             drawer.closeDrawer(GravityCompat.START);
         } else if (id == R.id.nav_subjects) {

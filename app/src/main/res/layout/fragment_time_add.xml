@@ -22,7 +22,7 @@
             android:layout_marginTop="20dp">
 
             <TextView
-                android:text="Начало урока"
+                android:text="@string/start_lesson"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView3"
@@ -47,7 +47,7 @@
             android:gravity="center">
 
             <TextView
-                android:text="Конец урока"
+                android:text="@string/end_lesson"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/textView4"

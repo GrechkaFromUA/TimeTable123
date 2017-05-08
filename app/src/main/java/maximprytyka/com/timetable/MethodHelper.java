@@ -24,10 +24,6 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-/**
- * Created by Максим on 07.05.2017.
- */
-
 public class MethodHelper {
 
 
@@ -73,11 +69,11 @@ public class MethodHelper {
 
 
         AlertDialog.Builder builder = new AlertDialog.Builder(ac);
-        builder.setTitle("Add new "+table)
+        builder.setTitle(R.string.alert_add)
                 .setView(et)
                 .setCancelable(true)
-                .setPositiveButton("Accept",null)
-                .setNegativeButton("Cancel",null);
+                .setPositiveButton(R.string.alert_add,null)
+                .setNegativeButton(R.string.alert_cancel,null);
 
         final AlertDialog alert = builder.create();
 
@@ -199,11 +195,11 @@ public class MethodHelper {
 
 
                                 final AlertDialog.Builder builder = new AlertDialog.Builder(ac);
-                                builder.setTitle("Rename "+table)
+                                builder.setTitle(R.string.rename)
                                         .setView(et)
                                         .setCancelable(true)
-                                        .setPositiveButton("Rename",null)
-                                        .setNegativeButton("Cancel", null);
+                                        .setPositiveButton(R.string.rename,null)
+                                        .setNegativeButton(R.string.alert_cancel, null);
 
                                 final AlertDialog alert = builder.create();
 
@@ -286,7 +282,7 @@ public class MethodHelper {
 
 
 
-        Toast.makeText(ac,R.string.action_clear_all, Toast.LENGTH_SHORT).show();
+        Toast.makeText(ac,R.string.action_clear_all_done, Toast.LENGTH_SHORT).show();
 
 
 

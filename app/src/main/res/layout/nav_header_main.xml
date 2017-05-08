@@ -12,13 +12,13 @@
 
     <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="TimeTable"
+        android:text="@string/app_name"
         android:textStyle="normal|bold"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:textSize="16sp" />
 
     <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
         android:id="@+id/textView"
-        android:text="Feedback: maximprytyka@gmail.com" />
+        android:text="@string/app_feedback" />
 
 </LinearLayout>
