@@ -101,11 +101,11 @@ public class TimeAddFragment extends Fragment {
                     }
 
                     String th1 = String.valueOf(tp1.getHour()).equals("0")? "00": String.valueOf(tp1.getHour());
-                    String th2 = String.valueOf(tp1.getHour()).equals("0")? "00": String.valueOf(tp1.getHour());
+                    String th2 = String.valueOf(tp2.getHour()).equals("0")? "00": String.valueOf(tp2.getHour());
 
                     String t1 = th1 + ":" + tt1 ;
 
-                    String t2 = th1 + ":" + tt2;
+                    String t2 = th2 + ":" + tt2;
                     time = t1 + " - " + t2;
 
                     ContentValues cv = new ContentValues();
@@ -133,7 +133,7 @@ public class TimeAddFragment extends Fragment {
 
 
                     String th1 = String.valueOf(tp1.getHour()).equals("0")? "00": String.valueOf(tp1.getHour());
-                    String th2 = String.valueOf(tp1.getHour()).equals("0")? "00": String.valueOf(tp1.getHour());
+                    String th2 = String.valueOf(tp2.getHour()).equals("0")? "00": String.valueOf(tp2.getHour());
 
                     String t1 = th1 + ":" + tt1 ;
                     
