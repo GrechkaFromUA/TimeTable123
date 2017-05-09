@@ -42,7 +42,7 @@ public class MethodHelper {
                 Log.d("mLog",cursor.getString(idIndex));
             } while (cursor.moveToNext());
         } else
-            Log.d("mLog","0 rows");
+            return new ArrayList<String>();
 
         cursor.close();
 
