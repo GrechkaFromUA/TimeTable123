@@ -39,6 +39,13 @@
     <string name="alert_cancel">Отменить</string>
     <string name="alert_subjects">Введите название предмета</string>
 
+    //Настройки
+
+    <string name="settings_1">24-х часовой формат</string>
+    <string name="settings_2">Установка 24-х формата для добавления времени уроков.</string>
+    <string name="settings_3">Отключить рекламу</string>
+    <string name="settings_4">Цена: 1.99$</string>
+
 
 
 </resources>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <Switch
+        android:defaultValue="true"
+        android:key="example_switch"
+        android:summary="Recommendations for people to contact
+        based on your message history"
+        android:title="Enable social recommendations" />
+
+
+
+</LinearLayout>

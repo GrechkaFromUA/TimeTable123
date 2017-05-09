@@ -14,6 +14,7 @@ import android.view.MenuItem;
 
 import maximprytyka.com.timetable.Fragmets.BuildsFragment;
 import maximprytyka.com.timetable.Fragmets.ExampleFragment;
+import maximprytyka.com.timetable.Fragmets.SettingsFragment;
 import maximprytyka.com.timetable.Fragmets.SubjectsFragment;
 import maximprytyka.com.timetable.Fragmets.TeachersFragment;
 import maximprytyka.com.timetable.Fragmets.TimeAddFragment;
@@ -97,7 +98,7 @@ public class MainActivity extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
 
         } else if (id == R.id.nav_settings) {
-           // fm.beginTransaction().replace(R.id.content_frame, new SettingsFragment()).commit();
+            fm.beginTransaction().replace(R.id.content_frame, new SettingsFragment()).commit();
             setTitle(getString(R.string.title_settings));
             drawer.closeDrawer(GravityCompat.START);
         } else if (id == R.id.nav_time) {
