@@ -85,7 +85,7 @@ public class TimeAddFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if(add == true) {
-                    String tt1 = null, tt2 = null;
+                    String tt1 = null, tt2 = null,th1=null,th2=null;
 
                     for(int i=0;i<10;i++){
                         String temp = "0"+i;
@@ -100,8 +100,23 @@ public class TimeAddFragment extends Fragment {
 
                     }
 
-                    String th1 = String.valueOf(tp1.getHour()).equals("0")? "00": String.valueOf(tp1.getHour());
-                    String th2 = String.valueOf(tp2.getHour()).equals("0")? "00": String.valueOf(tp2.getHour());
+                    for(int i=0;i<10;i++){
+                        String temp = "0"+i;
+
+                        if (String.valueOf(tp1.getHour()).equals(String.valueOf(i))){ th1 = temp; break;}
+                        else th1 = String.valueOf(tp1.getHour());
+
+                    }
+                    for(int i=0;i<10;i++){
+                        String temp = "0"+i;
+                        if (String.valueOf(tp2.getHour()).equals(String.valueOf(i))){ th2 = temp; break;}
+                        else th2 = String.valueOf(tp2.getHour());
+
+                    }
+
+
+
+
 
                     String t1 = th1 + ":" + tt1 ;
 
@@ -116,7 +131,7 @@ public class TimeAddFragment extends Fragment {
                     fm.beginTransaction().replace(R.id.content_frame, new TimeFragment()).commit(); //Заміна фрагмента по нажаттю кнопки
                     Toast.makeText(getActivity(), R.string.success_add, Toast.LENGTH_SHORT).show();
                 }else{
-                    String tt1 = null, tt2 = null;
+                    String tt1 = null, tt2 = null,th1=null,th2=null;
 
                    for(int i=0;i<10;i++){
                        String temp = "0"+i;
@@ -130,10 +145,21 @@ public class TimeAddFragment extends Fragment {
                         else tt2 = String.valueOf(tp2.getMinute());
 
                     }
+                    for(int i=0;i<10;i++){
+                        String temp = "0"+i;
+
+                        if (String.valueOf(tp1.getHour()).equals(String.valueOf(i))){ th1 = temp; break;}
+                        else th1 = String.valueOf(tp1.getHour());
+
+                    }
+                    for(int i=0;i<10;i++){
+                        String temp = "0"+i;
+                        if (String.valueOf(tp2.getHour()).equals(String.valueOf(i))){ th2 = temp; break;}
+                        else th2 = String.valueOf(tp2.getHour());
+
+                    }
 
 
-                    String th1 = String.valueOf(tp1.getHour()).equals("0")? "00": String.valueOf(tp1.getHour());
-                    String th2 = String.valueOf(tp2.getHour()).equals("0")? "00": String.valueOf(tp2.getHour());
 
                     String t1 = th1 + ":" + tt1 ;
                     

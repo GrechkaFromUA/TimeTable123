@@ -31,15 +31,14 @@ public class MethodHelper {
 
     public ArrayList<String> readFromDB(ArrayList<String> values,SQLiteDatabase db,String table){
 
-        Cursor cursor = db.query(table, null, null, null, null, null, null);
+        Cursor cursor = db.query(table, null, null, null, null,null,DBHelper.KEY_VALUE +" ASC",null);
 
         if (cursor.moveToFirst()) {
-            int idIndex = cursor.getColumnIndex(DBHelper.KEY_ID);
             int valueIndex = cursor.getColumnIndex(DBHelper.KEY_VALUE);
             do {
 
                 values.add(cursor.getString(valueIndex));
-                Log.d("mLog",cursor.getString(idIndex));
+
             } while (cursor.moveToNext());
         } else
             return new ArrayList<String>();

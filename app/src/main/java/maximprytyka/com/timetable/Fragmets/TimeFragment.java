@@ -16,6 +16,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.PopupMenu;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -36,6 +37,9 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 
 import maximprytyka.com.timetable.DBHelper;
 import maximprytyka.com.timetable.MethodHelper;
@@ -77,7 +81,18 @@ public class TimeFragment extends Fragment {
         mh= new MethodHelper();
 
         lv = (ListView) v.findViewById(R.id.listView);
+
         values = mh.readFromDB(values,db,table);
+
+        for(String counter: values){
+            Log.d("mLog",counter);
+        }
+
+        
+
+        for(String counter: values){
+            Log.d("mLog",counter);
+        }
         adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,values);
         lv.setAdapter(adapter);
 
