@@ -15,6 +15,7 @@
 
     <string name="rename">Переименовать</string>
     <string name="delete">Удалить</string>
+    <string name="success_rename">Успешно изменено</string>
 
     <string name="title_main">Главная</string>
     <string name="title_settings">Настройки</string>

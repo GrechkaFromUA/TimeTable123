@@ -104,7 +104,7 @@ public class TimeFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                fm.beginTransaction().replace(R.id.content_frame, new TimeAddFragment(true)).commit(); //Заміна фрагмента по нажаттю кнопки
+                fm.beginTransaction().setCustomAnimations(R.animator.slide_in_left2,R.animator.slide_in_right2).replace(R.id.content_frame, new TimeAddFragment(true)).commit(); //Заміна фрагмента по нажаттю кнопки
             }
         });
 

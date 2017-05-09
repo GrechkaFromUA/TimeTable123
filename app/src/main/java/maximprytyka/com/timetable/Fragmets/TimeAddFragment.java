@@ -128,7 +128,7 @@ public class TimeAddFragment extends Fragment {
                     db.insert(table, null, cv);
 
 
-                    fm.beginTransaction().replace(R.id.content_frame, new TimeFragment()).commit(); //Заміна фрагмента по нажаттю кнопки
+                    fm.beginTransaction().setCustomAnimations(R.animator.slide_in_left, R.animator.slide_in_right).replace(R.id.content_frame, new TimeFragment()).commit(); //Заміна фрагмента по нажаттю кнопки
                     Toast.makeText(getActivity(), R.string.success_add, Toast.LENGTH_SHORT).show();
                 }else{
                     String tt1 = null, tt2 = null,th1=null,th2=null;
@@ -174,7 +174,7 @@ public class TimeAddFragment extends Fragment {
                             new String[]{oldValue});
 
                     fm.beginTransaction().replace(R.id.content_frame, new TimeFragment()).commit(); //Заміна фрагмента по нажаттю кнопки
-                    Toast.makeText(getActivity(), R.string.rename, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.success_rename, Toast.LENGTH_SHORT).show();
 
                 }
             }
