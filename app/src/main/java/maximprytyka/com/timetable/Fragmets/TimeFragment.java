@@ -93,7 +93,7 @@ public class TimeFragment extends Fragment {
         for(String counter: values){
             Log.d("mLog",counter);
         }
-        adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,values);
+        adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_expandable_list_item_1,values);
         lv.setAdapter(adapter);
 
 
@@ -104,7 +104,7 @@ public class TimeFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                fm.beginTransaction().setCustomAnimations(R.animator.slide_in_left2,R.animator.slide_in_right2).replace(R.id.content_frame, new TimeAddFragment(true)).commit(); //Заміна фрагмента по нажаттю кнопки
+                fm.beginTransaction().setCustomAnimations(R.animator.slide_in_left2,R.animator.slide_in_right2).replace(R.id.content_frame, new TimeAddFragment(true,values)).commit(); //Заміна фрагмента по нажаттю кнопки
             }
         });
 
@@ -164,7 +164,7 @@ public class TimeFragment extends Fragment {
                                 return true;
                             case R.id.rename:
 
-                                fm.beginTransaction().replace(R.id.content_frame, new TimeAddFragment(false,Integer.parseInt(times[1]),Integer.parseInt(times[0]),Integer.parseInt(times[3]),Integer.parseInt(times[2]),var)).commit(); //Заміна фрагмента по нажаттю кнопки
+                                fm.beginTransaction().setCustomAnimations(R.animator.slide_in_left2,R.animator.slide_in_right2).replace(R.id.content_frame, new TimeAddFragment(false,Integer.parseInt(times[1]),Integer.parseInt(times[0]),Integer.parseInt(times[3]),Integer.parseInt(times[2]),var,values)).commit(); //Заміна фрагмента по нажаттю кнопки
 
                                 return true;
 

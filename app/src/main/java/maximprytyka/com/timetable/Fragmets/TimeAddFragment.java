@@ -20,6 +20,8 @@ import android.view.ViewGroup;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import maximprytyka.com.timetable.DBHelper;
 import maximprytyka.com.timetable.R;
 
@@ -35,14 +37,16 @@ public class TimeAddFragment extends Fragment {
     private boolean add;
     private int tp1Min,tp1Hour,tp2Min,tp2Hour;
     private String oldValue;
+    ArrayList<String> values;
 
 
-    public TimeAddFragment(boolean add){
+    public TimeAddFragment(boolean add, ArrayList<String> values){
 
         this.add = add;
+        this.values = values;
     }
 
-    public TimeAddFragment(boolean add,int tp1Min, int tp1Hour,int tp2Min,int tp2Hour,String oldValue){
+    public TimeAddFragment(boolean add,int tp1Min, int tp1Hour,int tp2Min,int tp2Hour,String oldValue,ArrayList<String> values){
 
         this.add = add;
         this.tp1Min = tp1Min;
@@ -50,6 +54,7 @@ public class TimeAddFragment extends Fragment {
         this.tp1Hour = tp1Hour;
         this.tp2Hour = tp2Hour;
         this.oldValue = oldValue;
+        this.values = values;
 
     }
 
@@ -84,6 +89,7 @@ public class TimeAddFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 if(add == true) {
                     String tt1 = null, tt2 = null,th1=null,th2=null;
 
@@ -122,14 +128,17 @@ public class TimeAddFragment extends Fragment {
 
                     String t2 = th2 + ":" + tt2;
                     time = t1 + " - " + t2;
+                    if(!values.contains(time)) {
 
-                    ContentValues cv = new ContentValues();
-                    cv.put("value", time);
-                    db.insert(table, null, cv);
+                        ContentValues cv = new ContentValues();
+                        cv.put("value", time);
+                        db.insert(table, null, cv);
 
 
                     fm.beginTransaction().setCustomAnimations(R.animator.slide_in_left, R.animator.slide_in_right).replace(R.id.content_frame, new TimeFragment()).commit(); //Заміна фрагмента по нажаттю кнопки
-                    Toast.makeText(getActivity(), R.string.success_add, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), R.string.success_add, Toast.LENGTH_SHORT).show();}
+                    else{Toast.makeText(getActivity(),R.string.error_same_value,Toast.LENGTH_SHORT).show();}
+
                 }else{
                     String tt1 = null, tt2 = null,th1=null,th2=null;
 
