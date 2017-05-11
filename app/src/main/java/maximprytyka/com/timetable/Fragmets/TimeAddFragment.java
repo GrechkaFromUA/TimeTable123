@@ -17,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -77,10 +78,7 @@ public class TimeAddFragment extends Fragment {
         tp1.setIs24HourView(timetype); //Якщо true - пропадає AM i PM, день стає 24-х годинний.
         tp2.setIs24HourView(timetype);
 
-        tp1.setHour(tp1Hour);
-        tp2.setHour(tp2Hour);
-        tp1.setMinute(tp1Min);
-        tp2.setMinute(tp2Min);
+
 
         final FragmentManager fm = getFragmentManager();
         final FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.fab);
@@ -95,28 +93,28 @@ public class TimeAddFragment extends Fragment {
 
                     for(int i=0;i<10;i++){
                         String temp = "0"+i;
-                        if (String.valueOf(tp1.getMinute()).equals(String.valueOf(i))){ tt1 = temp; break;}
-                        else tt1 = String.valueOf(tp1.getMinute());
+                        if (String.valueOf(tp1.getCurrentMinute()).equals(String.valueOf(i))){ tt1 = temp; break;}
+                        else tt1 = String.valueOf(tp1.getCurrentMinute());
 
                     }
                     for(int i=0;i<10;i++){
                         String temp = "0"+i;
-                        if (String.valueOf(tp2.getMinute()).equals(String.valueOf(i))){ tt2 = temp; break;}
-                        else tt2 = String.valueOf(tp2.getMinute());
+                        if (String.valueOf(tp2.getCurrentMinute()).equals(String.valueOf(i))){ tt2 = temp; break;}
+                        else tt2 = String.valueOf(tp2.getCurrentMinute());
 
                     }
 
                     for(int i=0;i<10;i++){
                         String temp = "0"+i;
 
-                        if (String.valueOf(tp1.getHour()).equals(String.valueOf(i))){ th1 = temp; break;}
-                        else th1 = String.valueOf(tp1.getHour());
+                        if (String.valueOf(tp1.getCurrentHour()).equals(String.valueOf(i))){ th1 = temp; break;}
+                        else th1 = String.valueOf(tp1.getCurrentHour());
 
                     }
                     for(int i=0;i<10;i++){
                         String temp = "0"+i;
-                        if (String.valueOf(tp2.getHour()).equals(String.valueOf(i))){ th2 = temp; break;}
-                        else th2 = String.valueOf(tp2.getHour());
+                        if (String.valueOf(tp2.getCurrentHour()).equals(String.valueOf(i))){ th2 = temp; break;}
+                        else th2 = String.valueOf(tp2.getCurrentHour());
 
                     }
 
@@ -140,31 +138,38 @@ public class TimeAddFragment extends Fragment {
                     else{Toast.makeText(getActivity(),R.string.error_same_value,Toast.LENGTH_SHORT).show();}
 
                 }else{
+
+                    tp1.setHour(tp1Hour);
+                    tp2.setHour(tp2Hour);
+                    tp1.setMinute(tp1Min);
+                    tp2.setMinute(tp2Min);
+
+
                     String tt1 = null, tt2 = null,th1=null,th2=null;
 
                    for(int i=0;i<10;i++){
                        String temp = "0"+i;
-                       if (String.valueOf(tp1.getMinute()).equals(String.valueOf(i))){ tt1 = temp; break;}
-                       else tt1 = String.valueOf(tp1.getMinute());
+                       if (String.valueOf(tp1.getCurrentMinute()).equals(String.valueOf(i))){ tt1 = temp; break;}
+                       else tt1 = String.valueOf(tp1.getCurrentMinute());
 
                    }
                     for(int i=0;i<10;i++){
                         String temp = "0"+i;
-                        if (String.valueOf(tp2.getMinute()).equals(String.valueOf(i))){ tt2 = temp; break;}
-                        else tt2 = String.valueOf(tp2.getMinute());
+                        if (String.valueOf(tp2.getCurrentMinute()).equals(String.valueOf(i))){ tt2 = temp; break;}
+                        else tt2 = String.valueOf(tp2.getCurrentMinute());
 
                     }
                     for(int i=0;i<10;i++){
                         String temp = "0"+i;
 
-                        if (String.valueOf(tp1.getHour()).equals(String.valueOf(i))){ th1 = temp; break;}
-                        else th1 = String.valueOf(tp1.getHour());
+                        if (String.valueOf(tp1.getCurrentHour()).equals(String.valueOf(i))){ th1 = temp; break;}
+                        else th1 = String.valueOf(tp1.getCurrentHour());
 
                     }
                     for(int i=0;i<10;i++){
                         String temp = "0"+i;
-                        if (String.valueOf(tp2.getHour()).equals(String.valueOf(i))){ th2 = temp; break;}
-                        else th2 = String.valueOf(tp2.getHour());
+                        if (String.valueOf(tp2.getCurrentHour()).equals(String.valueOf(i))){ th2 = temp; break;}
+                        else th2 = String.valueOf(tp2.getCurrentHour());
 
                     }
 

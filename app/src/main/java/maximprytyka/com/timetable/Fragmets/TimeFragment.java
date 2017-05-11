@@ -77,6 +77,7 @@ public class TimeFragment extends Fragment {
         setHasOptionsMenu(true);
 
         final FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.fab);
+        fab.bringToFront();
 
         mh= new MethodHelper();
 
