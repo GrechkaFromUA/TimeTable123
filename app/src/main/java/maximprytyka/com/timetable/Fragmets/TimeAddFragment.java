@@ -13,6 +13,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,7 +40,12 @@ public class TimeAddFragment extends Fragment {
     private int tp1Min,tp1Hour,tp2Min,tp2Hour;
     private String oldValue;
     ArrayList<String> values;
+    FragmentManager fm;
 
+
+    public TimeAddFragment(){
+
+    }
 
     public TimeAddFragment(boolean add, ArrayList<String> values){
 
@@ -84,10 +90,31 @@ public class TimeAddFragment extends Fragment {
         tp1.setCurrentMinute(tp1Min);
         tp2.setCurrentMinute(tp2Min);
 
-        final FragmentManager fm = getFragmentManager();
+        fm = getFragmentManager();
         final FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.fab);
 
         fab.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.accept));
+
+
+
+        v.setFocusableInTouchMode(true);
+        v.requestFocus();
+        v.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+
+                if( keyCode == KeyEvent.KEYCODE_BACK ) {
+
+                    fm.beginTransaction().setCustomAnimations(R.animator.slide_in_left, R.animator.slide_in_right).replace(R.id.content_frame, new TimeFragment()).commit();
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        });
+
+
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -188,7 +215,7 @@ public class TimeAddFragment extends Fragment {
                     db.update(table, cv, "value = ?",
                             new String[]{oldValue});
 
-                    fm.beginTransaction().replace(R.id.content_frame, new TimeFragment()).commit(); //Заміна фрагмента по нажаттю кнопки
+                    fm.beginTransaction().setCustomAnimations(R.animator.slide_in_left, R.animator.slide_in_right).replace(R.id.content_frame, new TimeFragment()).commit(); //Заміна фрагмента по нажаттю кнопки
                     Toast.makeText(getActivity(), R.string.success_rename, Toast.LENGTH_SHORT).show();
 
                 }
@@ -204,6 +231,8 @@ public class TimeAddFragment extends Fragment {
 
         return v;
     }
+
+
 
 
 
