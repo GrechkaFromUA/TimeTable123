@@ -79,6 +79,10 @@ public class TimeAddFragment extends Fragment {
         tp2.setIs24HourView(timetype);
 
 
+        tp1.setCurrentHour(tp1Hour);
+        tp2.setCurrentHour(tp2Hour);
+        tp1.setCurrentMinute(tp1Min);
+        tp2.setCurrentMinute(tp2Min);
 
         final FragmentManager fm = getFragmentManager();
         final FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.fab);
@@ -139,10 +143,7 @@ public class TimeAddFragment extends Fragment {
 
                 }else{
 
-                    tp1.setHour(tp1Hour);
-                    tp2.setHour(tp2Hour);
-                    tp1.setMinute(tp1Min);
-                    tp2.setMinute(tp2Min);
+
 
 
                     String tt1 = null, tt2 = null,th1=null,th2=null;
