@@ -1,6 +1,9 @@
 <resources>
+    <string name="admob_ind">ca-app-pub-3940256099942544/6300978111</string>
     <string name="app_name">Расписание</string>
     <string name="app_feedback">Обратная связь: maxympritika@gmail.com</string>
+
+
 
     <string name="navigation_drawer_open">Открыть меню</string>
     <string name="navigation_drawer_close">Закрыть меню</string>
