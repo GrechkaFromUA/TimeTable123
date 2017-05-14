@@ -19,7 +19,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/cast_expanded_controller_seekbar_thumb"
+            app:srcCompat="@drawable/ic_circle"
             android:id="@+id/imageView"
             android:layout_marginRight="15dp"
             android:layout_gravity="center_vertical"
