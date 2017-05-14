@@ -93,7 +93,7 @@ public class TimeAddFragment extends Fragment {
         fm = getFragmentManager();
         final FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.fab);
 
-        fab.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.accept));
+        fab.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_accept));
 
 
 

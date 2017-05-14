@@ -56,7 +56,7 @@ public class TypeFragment extends Fragment{
 
         final FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.fab_tea);
         fab.bringToFront();
-        fab.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.plus));
+        fab.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_plus));
         fab.setClickable(true);
 
         dbHelper = new DBHelper(getActivity());

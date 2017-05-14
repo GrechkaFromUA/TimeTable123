@@ -100,7 +100,7 @@ public class TimeFragment extends Fragment {
 
 
 
-        fab.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.plus));
+        fab.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_plus));
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -57,7 +57,7 @@ public class SubjectsFragment extends Fragment{
 
         final FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.fab_tea);
         fab.bringToFront();
-        fab.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.plus));
+        fab.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_plus));
         fab.setClickable(true);
 
 

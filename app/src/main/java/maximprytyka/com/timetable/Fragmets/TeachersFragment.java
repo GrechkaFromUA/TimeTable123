@@ -62,7 +62,7 @@ public class TeachersFragment extends Fragment{
 
         final FloatingActionButton fab = (FloatingActionButton) v.findViewById(id.fab_tea);
         fab.bringToFront();
-        fab.setImageDrawable(ContextCompat.getDrawable(getActivity(), drawable.plus));
+        fab.setImageDrawable(ContextCompat.getDrawable(getActivity(), drawable.ic_plus));
         fab.setClickable(true);
 
 

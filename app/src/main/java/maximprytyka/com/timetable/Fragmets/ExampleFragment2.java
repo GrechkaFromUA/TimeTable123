@@ -25,7 +25,7 @@ public class ExampleFragment2 extends Fragment {
         View v = inflater.inflate(R.layout.fragment_example2,container,false);
         final FragmentManager fm = getFragmentManager();
         final FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.fab);
-        fab.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.plus));
+        fab.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_plus));
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

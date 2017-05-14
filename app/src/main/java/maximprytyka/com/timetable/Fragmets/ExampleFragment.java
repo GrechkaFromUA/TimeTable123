@@ -32,7 +32,7 @@ public class ExampleFragment extends Fragment {
 
         fm.beginTransaction();
 
-        fab.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.edit));
+        fab.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_edit));
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
