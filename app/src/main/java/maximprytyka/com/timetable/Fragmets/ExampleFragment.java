@@ -4,29 +4,26 @@ package maximprytyka.com.timetable.Fragmets;
 import android.annotation.TargetApi;
 import android.app.Fragment;
 import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+
 import maximprytyka.com.timetable.DBHelper;
-import maximprytyka.com.timetable.ItemAdapter;
+import maximprytyka.com.timetable.Adapters.ItemDayAdapter;
 import maximprytyka.com.timetable.R;
 
 
 public class ExampleFragment extends Fragment {
 
-     String[] days;
-    String temp;
+     String[] days = {"Monday","Vivtorok","Sereda","Chetver","Pyatnytsa","Subota","Nedilya"};
+    ArrayList<String> temp = new ArrayList<>();
     DBHelper dbHelper;
     @TargetApi(Build.VERSION_CODES.M)
     @Nullable
@@ -39,17 +36,12 @@ public class ExampleFragment extends Fragment {
 
         dbHelper= new DBHelper(getActivity());
         ListView lv = (ListView) v.findViewById(R.id.mainLv);
-        for(int i=1;i<=7;i++)
-            if (dbHelper.getProfilesCount(dbHelper.getNameTableByNumb(i)) == 0) {
 
-            } else {
-                temp += " " + dbHelper.getNameTableByNumb(i);
-            }
-        days =temp.split(" ");
-        ItemAdapter id = new ItemAdapter(getActivity(),days);
+
+        ItemDayAdapter id = new ItemDayAdapter(getActivity(),days);
         lv.setAdapter(id);
 
-        fab.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_edit));
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

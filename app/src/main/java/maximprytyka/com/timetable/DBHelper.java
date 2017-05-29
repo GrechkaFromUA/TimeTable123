@@ -71,7 +71,7 @@ public class DBHelper  extends SQLiteOpenHelper{
         return cnt;
     }
 
-    public String getNameTableByNumb(int i){
+    public static String getNameTableByNumb(int i){
         String temp = null;
 
         switch(i){

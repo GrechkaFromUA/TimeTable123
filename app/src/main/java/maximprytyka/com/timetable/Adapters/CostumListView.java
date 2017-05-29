@@ -1,4 +1,4 @@
-package maximprytyka.com.timetable.Fragmets;
+package maximprytyka.com.timetable.Adapters;
 
 import android.content.Context;
 import android.graphics.Canvas;

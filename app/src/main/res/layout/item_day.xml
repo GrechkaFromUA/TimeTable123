@@ -17,7 +17,7 @@
         android:inputType="textPersonName"
         android:text="Name" />
 
-    <maximprytyka.com.timetable.Fragmets.CostumListView
+    <maximprytyka.com.timetable.Adapters.CostumListView
         android:id="@+id/lv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
