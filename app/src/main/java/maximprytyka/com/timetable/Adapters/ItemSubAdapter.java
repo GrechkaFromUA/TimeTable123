@@ -40,6 +40,7 @@ public class ItemSubAdapter extends ArrayAdapter<ItemSub>{
         TextView teacher = (TextView) convertView.findViewById(R.id.teacher);
         teacher.setText(item.getTeacher());
 
+        //test
         return convertView;
     }
 
