@@ -9,7 +9,9 @@
         android:key="example_switch"
         android:summary="Recommendations for people to contact
         based on your message history"
-        android:title="Enable social recommendations" />
+        android:title="Enable social recommendations"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content" />
 
 
 

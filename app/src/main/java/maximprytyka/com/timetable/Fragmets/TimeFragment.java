@@ -85,9 +85,7 @@ public class TimeFragment extends Fragment {
 
         values = mh.readFromDB(values,db,table);
 
-        for(String counter: values){
-            Log.d("mLog",counter);
-        }
+
 
         
 

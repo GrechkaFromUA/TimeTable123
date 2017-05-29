@@ -15,12 +15,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
+import maximprytyka.com.timetable.DBHelper;
+import maximprytyka.com.timetable.ItemAdapter;
 import maximprytyka.com.timetable.R;
 
 
 public class ExampleFragment extends Fragment {
 
+     String[] days;
+    String temp;
+    DBHelper dbHelper;
     @TargetApi(Build.VERSION_CODES.M)
     @Nullable
     @Override
@@ -30,7 +37,17 @@ public class ExampleFragment extends Fragment {
         final FragmentManager fm = getFragmentManager();
         final FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.fab);
 
-        fm.beginTransaction();
+        dbHelper= new DBHelper(getActivity());
+        ListView lv = (ListView) v.findViewById(R.id.mainLv);
+        for(int i=1;i<=7;i++)
+            if (dbHelper.getProfilesCount(dbHelper.getNameTableByNumb(i)) == 0) {
+
+            } else {
+                temp += " " + dbHelper.getNameTableByNumb(i);
+            }
+        days =temp.split(" ");
+        ItemAdapter id = new ItemAdapter(getActivity(),days);
+        lv.setAdapter(id);
 
         fab.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_edit));
         fab.setOnClickListener(new View.OnClickListener() {
