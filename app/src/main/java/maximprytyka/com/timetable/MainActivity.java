@@ -17,7 +17,7 @@ import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
 
 import maximprytyka.com.timetable.Fragmets.BuildsFragment;
-import maximprytyka.com.timetable.Fragmets.ExampleFragment;
+import maximprytyka.com.timetable.Fragmets.MainScreenFragment;
 import maximprytyka.com.timetable.Fragmets.SettingsFragment;
 import maximprytyka.com.timetable.Fragmets.SubjectsFragment;
 import maximprytyka.com.timetable.Fragmets.TeachersFragment;
@@ -54,6 +54,8 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        getFragmentManager().beginTransaction().replace(R.id.content_frame, new MainScreenFragment()).commit(); //Заміна фрагмента по нажаттю кнопки
     }
 
     @Override
@@ -107,7 +109,7 @@ public class MainActivity extends AppCompatActivity
 
 
         if (id == R.id.nav_main) {
-            fm.beginTransaction().replace(R.id.content_frame, new ExampleFragment()).commit();
+            fm.beginTransaction().replace(R.id.content_frame, new MainScreenFragment()).commit();
             setTitle(getString(R.string.timetable));
             drawer.closeDrawer(GravityCompat.START);
 
@@ -144,4 +146,5 @@ public class MainActivity extends AppCompatActivity
 
         return true;
     }
+
 }

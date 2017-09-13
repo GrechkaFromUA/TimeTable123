@@ -30,7 +30,7 @@ public class ExampleFragment2 extends Fragment {
             @Override
             public void onClick(View view) {
 
-                fm.beginTransaction().setCustomAnimations(R.animator.slide_in_left,R.animator.slide_in_right).replace(R.id.content_frame, new ExampleFragment()).commit(); //Заміна фрагмента по нажаттю кнопки
+                fm.beginTransaction().setCustomAnimations(R.animator.slide_in_left,R.animator.slide_in_right).replace(R.id.content_frame, new MainScreenFragment()).commit(); //Заміна фрагмента по нажаттю кнопки
             }
         });
 
