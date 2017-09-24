@@ -9,7 +9,9 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +23,8 @@ import android.widget.TextView;
 import maximprytyka.com.timetable.DBHelper;
 import maximprytyka.com.timetable.R;
 import maximprytyka.com.timetable.SubjectItem;
+
+import static android.widget.GridLayout.VERTICAL;
 
 
 public class MainScreenFragment extends Fragment {
@@ -43,20 +47,30 @@ public class MainScreenFragment extends Fragment {
 
 
 
-        ll = (LinearLayout) v.findViewById(R.id.lvMain);
-
-        LinearLayout rl = (LinearLayout) dopInf.inflate(R.layout.list_item,null, false);
-
-        SubjectItem sb = new SubjectItem("Math",getActivity());
-
-
-        ll.addView(sb.item());
-
-       // ll.addView(rl);
-
-
+//        ll = (LinearLayout) v.findViewById(R.id.lvMain);
+//
+//        LinearLayout rl = (LinearLayout) dopInf.inflate(R.layout.list_item,null, false);
+//
+//        SubjectItem sb = new SubjectItem("Math",getActivity());
+//
+//
+//        ll.addView(sb.item());
+//
+//        ll.addView(rl);
 
 
+        LinearLayout parentLayout = (LinearLayout) v.findViewById(R.id.lvMain);
+        LinearLayout linearLayout1 = (LinearLayout) dopInf.inflate(R.layout.list_item,null, false);
+        LinearLayout linearLayout2 = (LinearLayout) dopInf.inflate(R.layout.list_item,null, false);
+
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                AppBarLayout.LayoutParams.WRAP_CONTENT, AppBarLayout.LayoutParams.WRAP_CONTENT);
+
+        params.gravity = Gravity.CENTER_VERTICAL;
+
+        parentLayout.setOrientation(VERTICAL);
+        parentLayout.addView(linearLayout1, params);
+        parentLayout.addView(linearLayout2, params);
 
 
 

@@ -48,6 +48,10 @@
     <string name="settings_2">Установка 24-х формата для добавления времени уроков.</string>
     <string name="settings_3">Отключить рекламу</string>
     <string name="settings_4">Цена: 0.99$</string>
+    <string name="settings_5">Восстановить покупки</string>
+    <string name="settings_6">Используйте этот пункт если вы уже покупали отключение рекламы.</string>
+    <string name="settings_category">Основные параметры</string>
+    <string name="settings_category2">Дополнительные параметры</string>
 
 
 
