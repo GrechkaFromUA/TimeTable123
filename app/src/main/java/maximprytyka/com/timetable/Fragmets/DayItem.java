@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -12,32 +13,73 @@ import java.util.ArrayList;
 import maximprytyka.com.timetable.R;
 import maximprytyka.com.timetable.SubjectItem;
 
+import static android.support.v7.preference.R.id.wrap_content;
+
+
 /**
  * Created by maksimkuc on 9/2/17.
  */
 
 public class DayItem {
 
-    private ArrayList<SubjectItem> subjectItems;
-    private int count;
-    private  String day;
+    private ArrayList<String> subjectArr;
+    private boolean edit;
+    private  String dayName;
     private Activity activity;
 
-    public DayItem(ArrayList<SubjectItem> subjectItems,String day,Activity activity){
+    public DayItem(ArrayList<String> subjectarr,String dayName,Activity activity,boolean edit){
 
-        this.subjectItems = subjectItems;
+        this.subjectArr = subjectarr;
         this.activity = activity;
+        this.dayName = dayName;
+        this.edit=edit;
 
     }
 
    public View itemDay(){
+
+       //Inflate from other xml
        LayoutInflater li = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-       LinearLayout ll = (LinearLayout) li.inflate(R.layout.list_item,null,false);
+       LinearLayout ll = (LinearLayout) li.inflate(R.layout.item_day,null,false);
+        //Find and change text on TextView
+
+       LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
+               LinearLayout.LayoutParams.WRAP_CONTENT);
+
+       Button bt = (Button) ll.findViewById(R.id.add_butt);
+       if(this.edit == true){
+
+
+       }else{
+
+           params.height=0;
+       }
+        bt.setLayoutParams(params);
+       TextView tw = (TextView) ll.findViewById(R.id.dayName);
+
+       String day = dayName.substring(0,1).toUpperCase() + dayName.substring(1).toLowerCase();
+
+
+       tw.setText(day);
+
+        //Find view witch contain SubjectItems
+        LinearLayout view = (LinearLayout) ll.findViewById(R.id.content);
 
 
 
 
+       int repeat = subjectArr.size()/6;
+
+    if(subjectArr.size()>0) {
+        for (int i = 0; i < repeat; i++) {
+
+
+            view.addView(new SubjectItem(this.subjectArr.get(0 + i), this.subjectArr.get(0 + repeat + i), this.subjectArr.get(0 + 2 * repeat + i), this.subjectArr.get(0 + 3 * repeat + i), this.subjectArr.get(0 + 4 * repeat + i), this.subjectArr.get(0 + 5 * repeat + i), activity,this.edit).item());
+
+
+        }
+    }
 
 
     return  ll;

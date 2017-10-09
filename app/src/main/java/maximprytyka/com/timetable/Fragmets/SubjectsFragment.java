@@ -32,10 +32,8 @@ import static maximprytyka.com.timetable.DBHelper.KEY_VALUE;
 
 
 public class SubjectsFragment extends Fragment{
-    String var;
     private ListView lv;
     ArrayList<String> values = new ArrayList<>();
-    //SQlite Components
     DBHelper dbHelper;
     final String table = DBHelper.TABLE_SUB;
     SQLiteDatabase db;

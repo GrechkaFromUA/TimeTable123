@@ -26,6 +26,7 @@ import java.util.ArrayList;
 
 public class MethodHelper {
 
+    public static int swap=0;
 
 
 

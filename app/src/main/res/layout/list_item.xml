@@ -5,12 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:elevation="0dp"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:paddingBottom="2dp"
+    android:paddingLeft="2dp"
+    android:paddingRight="2dp"
+    android:paddingTop="2dp"
+    android:weightSum="100"
+    app:layout_collapseParallaxMultiplier="0.0">
 
     <LinearLayout
+        android:id="@+id/main_sub"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:layout_weight="100"
         android:background="@drawable/layout_bg"
         android:orientation="horizontal"
         android:padding="10dp">
@@ -119,4 +127,11 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/remove_button"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="0"
+        android:text="Remove" />
 </LinearLayout>
