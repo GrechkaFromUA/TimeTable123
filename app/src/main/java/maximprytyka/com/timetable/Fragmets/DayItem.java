@@ -1,19 +1,21 @@
 package maximprytyka.com.timetable.Fragmets;
 
 import android.app.Activity;
+import android.app.FragmentManager;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import maximprytyka.com.timetable.R;
 import maximprytyka.com.timetable.SubjectItem;
 
-import static android.support.v7.preference.R.id.wrap_content;
+
 
 
 /**
@@ -56,6 +58,14 @@ public class DayItem {
            params.height=0;
        }
         bt.setLayoutParams(params);
+
+       bt.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               activity.getFragmentManager().beginTransaction().replace(R.id.content_frame, new AddSubFragment()).commit();
+
+           }
+       });
        TextView tw = (TextView) ll.findViewById(R.id.dayName);
 
        String day = dayName.substring(0,1).toUpperCase() + dayName.substring(1).toLowerCase();
@@ -84,8 +94,6 @@ public class DayItem {
 
     return  ll;
    }
-
-
 
 
 

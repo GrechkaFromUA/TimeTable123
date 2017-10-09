@@ -79,7 +79,7 @@ public class MainScreenFragment extends Fragment {
 
         final FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.fab_main);
         fab.bringToFront();
-        fab.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_plus));
+        fab.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_edit));
         fab.setClickable(true);
 
         fab.setOnClickListener(new View.OnClickListener() {
@@ -99,7 +99,7 @@ public class MainScreenFragment extends Fragment {
                         break;
 
                     case 1:
-                        fab.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_plus));
+                        fab.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_edit));
                         MethodHelper.swap = 0;
                         removeAllView(v);
                         startMain(v);
@@ -227,6 +227,8 @@ public class MainScreenFragment extends Fragment {
         }
 
     }
+
+
 
 }
 

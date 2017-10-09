@@ -1,0 +1,41 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <Preference
+        android:summary="Выберите предмет"
+        android:key="subject"
+        android:title="Предмет">
+    </Preference>
+    <PreferenceCategory android:title="Время">
+        <Preference
+            android:summary="Время когда предмет начинается"
+            android:key="time_start"
+            android:title="Начало предмета">
+        </Preference>
+        <Preference
+            android:summary="Время когда предмет заканчивается"
+            android:key="time_end"
+            android:title="Конец предмета">
+        </Preference>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Дополнительные данные">
+        <Preference
+            android:summary="Корпус 1"
+            android:key="building"
+            android:title="Здание">
+        </Preference>
+        <EditTextPreference
+            android:key="room"
+            android:title="Аудитория/Класс"
+            android:summary="21"
+            android:defaultValue="*"/>
+        <Preference
+            android:summary="И.К Непрограммер"
+            android:key="teacher"
+            android:title="Учитель">
+        </Preference>
+        <Preference
+            android:summary="Лекция"
+            android:key="lesson_type"
+            android:title="Тип урока">
+        </Preference>
+    </PreferenceCategory>
+</PreferenceScreen>
