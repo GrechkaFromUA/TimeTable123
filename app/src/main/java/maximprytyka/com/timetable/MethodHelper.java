@@ -289,5 +289,23 @@ public class MethodHelper {
     }
 
 
+    public ArrayList<String> getAllStringValues(SQLiteDatabase db,String table,String column) {
+        ArrayList<String> yourStringValues = new ArrayList<String>();
+        Cursor result = db.query(true, table,
+                new String[] { column }, null, null, null, null,
+                null, null);
+
+        if (result.moveToFirst()) {
+            do {
+                yourStringValues.add(result.getString(result
+                        .getColumnIndex(column)));
+            } while (result.moveToNext());
+        } else {
+            return null;
+        }
+        return yourStringValues;
+    }
+
+
 
 }

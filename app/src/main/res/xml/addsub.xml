@@ -1,41 +1,43 @@
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:key="temp">
     <Preference
-        android:summary="Выберите предмет"
         android:key="subject"
-        android:title="Предмет">
-    </Preference>
+        android:summary="Выберите предмет"
+        android:title="Предмет"
+        app:key="subject"></Preference>
     <PreferenceCategory android:title="Время">
         <Preference
-            android:summary="Время когда предмет начинается"
-            android:key="time_start"
-            android:title="Начало предмета">
-        </Preference>
-        <Preference
-            android:summary="Время когда предмет заканчивается"
-            android:key="time_end"
-            android:title="Конец предмета">
-        </Preference>
+            android:key="time"
+            android:summary="виберете время занятий"
+            android:title="Время предмета"
+            app:key="time"></Preference>
     </PreferenceCategory>
     <PreferenceCategory android:title="Дополнительные данные">
         <Preference
-            android:summary="Корпус 1"
             android:key="building"
-            android:title="Здание">
-        </Preference>
+            android:summary="Корпус 1"
+            android:title="Здание"
+            app:key="buildings"></Preference>
         <EditTextPreference
+            android:defaultValue="*"
             android:key="room"
-            android:title="Аудитория/Класс"
             android:summary="21"
-            android:defaultValue="*"/>
+            android:title="Аудитория/Класс"
+            app:key="clas" />
         <Preference
-            android:summary="И.К Непрограммер"
             android:key="teacher"
-            android:title="Учитель">
-        </Preference>
+            android:summary="И.К Непрограммер"
+            android:title="Учитель"
+            app:key="teacher"></Preference>
         <Preference
-            android:summary="Лекция"
             android:key="lesson_type"
-            android:title="Тип урока">
-        </Preference>
+            android:summary="Лекция"
+            android:title="Тип урока"
+            app:key="lesson_type"></Preference>
     </PreferenceCategory>
+    <Preference
+        android:key=""
+        android:summary=""
+        android:title=""></Preference>
 </PreferenceScreen>

@@ -62,7 +62,7 @@ public class DayItem {
        bt.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               activity.getFragmentManager().beginTransaction().replace(R.id.content_frame, new AddSubFragment()).commit();
+               activity.getFragmentManager().beginTransaction().replace(R.id.content_frame, new AddSubFragment(dayName)).commit();
 
            }
        });

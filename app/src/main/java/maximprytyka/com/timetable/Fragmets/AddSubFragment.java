@@ -8,6 +8,7 @@ import android.app.FragmentManager;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
@@ -21,6 +22,12 @@ import maximprytyka.com.timetable.R;
 
 public class AddSubFragment extends Fragment {
 
+    private String day;
+
+    public AddSubFragment(String day) {
+        this.day = day;
+    }
+
     @TargetApi(Build.VERSION_CODES.M)
     @Nullable
 
@@ -30,12 +37,13 @@ public class AddSubFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_content_add, container, false);
         FragmentManager fm = getFragmentManager(); //Фрагмент менеджер
 
-        fm.beginTransaction().replace(R.id.frame, new AddSubPreferenceFragment()).commit();
+        fm.beginTransaction().replace(R.id.frame, new AddSubPreferenceFragment(day)).commit();
 
         FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.fab);
         fab.bringToFront();
         fab.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_accept));
         fab.setClickable(true);
+
 
 
         fab.setOnClickListener(new View.OnClickListener() {
@@ -47,8 +55,12 @@ public class AddSubFragment extends Fragment {
         });
 
 
+
+
         return v;
     }
+
+
 
 
 }
