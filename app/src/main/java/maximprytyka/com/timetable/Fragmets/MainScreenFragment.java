@@ -55,7 +55,7 @@ public class MainScreenFragment extends Fragment {
 
 
         if (MethodHelper.swap == 0) {
-            startMain(v, fab,false);
+            startMain(v, fab,0);
         } else {
             startMainEditable(v, fab);
         }
@@ -71,7 +71,8 @@ public class MainScreenFragment extends Fragment {
                         startMainEditable(v, fab);
                         break;
                     case 1:
-                        startMain(v, fab,true);
+                        startMain(v, fab,1);
+
                         break;
                 }
 
@@ -83,11 +84,7 @@ public class MainScreenFragment extends Fragment {
     }
 
 
-    @Override
-    public void onStart() {
-        super.onStart();
 
-    }
 
 
     public ArrayList<String> getAllData(String day) {
@@ -135,7 +132,7 @@ public class MainScreenFragment extends Fragment {
     }
 
 
-    public void startMain(View v, FloatingActionButton fab,boolean animated) {
+    public void startMain(View v, FloatingActionButton fab,int animated) {
 
         MethodHelper.swap = 0;
 
@@ -145,7 +142,7 @@ public class MainScreenFragment extends Fragment {
 
         LinearLayout lv = (LinearLayout) v.findViewById(R.id.lvMain);
 
-        int countOfRows = 0;
+
 
 
         for (int i = 0; i < 7; i++) {
@@ -154,13 +151,13 @@ public class MainScreenFragment extends Fragment {
 
             } else {
 
-                View temp = new DayItem(getAllData(days[i]), days[i], getActivity(), false,false).itemDay();
+                View temp = new DayItem(animated, getAllData(days[i]), days[i], getActivity() ,false ,false).itemDay();
 
                 lv.addView(temp);
 
 
             }
-            countOfRows += getRowCount(days[i]);
+
 
         }
 
@@ -196,7 +193,7 @@ public class MainScreenFragment extends Fragment {
 
             }
 
-            View temp = new DayItem(getAllData(days[i]), days[i], getActivity(), true,textAnim).itemDay();
+            View temp = new DayItem(2, getAllData(days[i]), days[i], getActivity(), true,textAnim).itemDay();
 
             lv.addView(temp);
 

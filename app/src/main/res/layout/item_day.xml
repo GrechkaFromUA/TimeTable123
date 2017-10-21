@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingBottom="10dp"
+    android:paddingBottom="0dp"
     android:paddingTop="10dp"
     android:weightSum="0">
 
@@ -18,29 +18,29 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginLeft="50dp"
+        android:fontFamily="Roboto"
+        android:paddingBottom="5dp"
         android:text="Monday"
         android:textAlignment="textStart"
-        android:textSize="22sp"
-        android:fontFamily="Roboto"
-        android:typeface="normal"
-        android:layout_marginLeft="50dp"
         android:textColor="#7bdeee"
-        android:paddingBottom="5dp" />
+        android:textSize="22sp"
+        android:typeface="normal" />
 
     <LinearLayout
         android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/dayName"
-        android:orientation="vertical"
-        android:layout_marginLeft="10dp"></LinearLayout>
+        android:layout_marginLeft="10dp"
+        android:orientation="vertical"></LinearLayout>
 
     <Button
         android:id="@+id/add_butt"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/add_subj_button"
-        android:layout_gravity="center" />
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:background="@drawable/add_subj_button" />
 
 
 </LinearLayout>

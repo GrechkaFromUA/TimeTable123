@@ -5,6 +5,7 @@ import android.app.FragmentManager;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
@@ -19,16 +20,17 @@ import maximprytyka.com.timetable.R;
 import maximprytyka.com.timetable.SubjectItem;
 
 
-public class DayItem {
 
+public class DayItem {
+    private int animetedBack;
     private ArrayList<String> subjectArr;
     private boolean edit;
     private boolean backAnim;
     private String dayName;
     private Activity activity;
 
-    public DayItem(ArrayList<String> subjectarr, String dayName, Activity activity, boolean edit,boolean backAnim) {
-
+    public DayItem(int animetedBack, ArrayList<String> subjectarr, String dayName, Activity activity, boolean edit, boolean backAnim) {
+        this.animetedBack = animetedBack;
         this.subjectArr = subjectarr;
         this.activity = activity;
         this.dayName = dayName;
@@ -42,10 +44,11 @@ public class DayItem {
         LayoutInflater li = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         LinearLayout ll = (LinearLayout) li.inflate(R.layout.item_day, null, false);
-        //Find and change text on TextView
 
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT);
+        //Find and change text on TextView
+        final Button bt = (Button) ll.findViewById(R.id.add_butt);
+
+        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) bt.getLayoutParams();
 
         Animation animation;
 
@@ -55,16 +58,57 @@ public class DayItem {
 
 
 
-        Button bt = (Button) ll.findViewById(R.id.add_butt);
-        if (this.edit) {
 
-        } else {
 
-            params.height = 0;
+
+
+            if(animetedBack == 0){
+
+
+            }
+
+
+        if(animetedBack == 1){
+
+            bt.getLayoutParams().height = LinearLayout.LayoutParams.WRAP_CONTENT;
+            Animation back;
+            back = AnimationUtils.loadAnimation(activity,
+                    R.anim.zoom_in_back);
+
+            bt.startAnimation(back);
+
+
+
+            bt.getAnimation().setAnimationListener(new Animation.AnimationListener() {
+                @Override
+                public void onAnimationStart(Animation animation) {
+
+                }
+
+                @Override
+                public void onAnimationEnd(Animation animation) {
+
+                    bt.getLayoutParams().height = 0;
+                }
+
+                @Override
+                public void onAnimationRepeat(Animation animation) {
+
+                }
+            });
+
         }
-        bt.setLayoutParams(params);
 
-        bt.startAnimation(animation);
+
+        if(animetedBack == 2){
+            bt.getLayoutParams().height = LinearLayout.LayoutParams.WRAP_CONTENT;
+            bt.setAnimation(animation);
+
+        }
+
+
+
+
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -74,12 +118,16 @@ public class DayItem {
 
             }
         });
+
+
+
+
+
         TextView tw = (TextView) ll.findViewById(R.id.dayName);
-
         String day = dayName.substring(0, 1).toUpperCase() + dayName.substring(1).toLowerCase();
-
-
         tw.setText(day);
+
+
         if(backAnim){
             tw.setAnimation(animation);
         }
@@ -103,6 +151,10 @@ public class DayItem {
 
         return ll;
     }
+
+
+
+
 
 
 }
