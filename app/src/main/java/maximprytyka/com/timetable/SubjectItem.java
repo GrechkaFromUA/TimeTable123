@@ -159,8 +159,7 @@ public class SubjectItem {
 
         LinearLayout temp = (LinearLayout) ll.findViewById(R.id.main_sub);
 
-        final LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        final LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) temp.getLayoutParams();
 
 
         if (edit == true) {
@@ -174,7 +173,7 @@ public class SubjectItem {
 
         return ll;
     }
-    
+
     public void writeStaticVars() {
 
         AddSubPreferenceFragment.subject = this.subject;

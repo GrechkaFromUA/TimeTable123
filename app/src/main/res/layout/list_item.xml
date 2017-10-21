@@ -18,7 +18,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"
         android:layout_weight="100"
         android:background="@drawable/layout_bg"
         android:orientation="horizontal"
@@ -141,24 +140,27 @@
     <LinearLayout
         android:id="@+id/but_loy"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
         android:layout_weight="0"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:layout_marginTop="2dp">
 
         <Button
             android:id="@+id/remove_button"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="100"
-            android:text="Remove" />
+            android:background="@drawable/delete"
+            android:layout_marginBottom="5dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp" />
 
         <Button
             android:id="@+id/edit"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="100"
-            android:text="edit" />
+            android:background="@drawable/edit"
+            android:layout_width="35dp"
+            android:layout_height="35dp" />
     </LinearLayout>
 
 </LinearLayout>

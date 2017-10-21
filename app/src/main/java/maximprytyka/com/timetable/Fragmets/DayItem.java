@@ -34,7 +34,6 @@ public class DayItem {
         this.dayName = dayName;
         this.edit = edit;
         this.backAnim = backAnim;
-
     }
 
     public View itemDay() {
