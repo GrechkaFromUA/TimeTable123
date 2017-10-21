@@ -22,7 +22,7 @@ public class AddSubPreferenceFragment extends PreferenceFragment {
     public static String type;
 
 
-    public static final String[] tables = {"subjects","time","buildings","room","teachers","lesson_type"};
+    public static final String[] tables = {"subjects", "time", "buildings", "room", "teachers", "lesson_type"};
 
 
     private String day;
@@ -44,20 +44,17 @@ public class AddSubPreferenceFragment extends PreferenceFragment {
     public void onCreate(final Bundle savedInstanceState) {
 
 
-
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.addsub); //файл в папці res/xml
 
 
+        for (int i = 0; i < tables.length; i++) {
 
-       for(int i=0;i<tables.length;i++){
-
-           pref(tables[i]);
-       }
+            pref(tables[i]);
+        }
 
 
-        final EditTextPreference et = (EditTextPreference)  findPreference("room");
-
+        final EditTextPreference et = (EditTextPreference) findPreference("room");
 
 
         et.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
@@ -71,75 +68,65 @@ public class AddSubPreferenceFragment extends PreferenceFragment {
         });
 
 
-
-
-
-
-
-
     }
 
 
-
-
-    void pref(final String table){
+    void pref(final String table) {
 
         Preference pref = findPreference(table); //найти пункт по параметру "key"
         switch (table) {
 
             case "subjects":
-               if( AddSubPreferenceFragment.subject==null){
-                   AddSubPreferenceFragment.subject = "temp";
+                if (AddSubPreferenceFragment.subject == null) {
+                    AddSubPreferenceFragment.subject = "temp";
 
-               }
+                }
                 pref.setSummary(AddSubPreferenceFragment.subject);
-                prefClick(pref,table);
+                prefClick(pref, table);
                 break;
 
             case "time":
-                if( AddSubPreferenceFragment.time==null){
+                if (AddSubPreferenceFragment.time == null) {
                     AddSubPreferenceFragment.time = "temp";
 
                 }
                 pref.setSummary(AddSubPreferenceFragment.time);
-                prefClick(pref,table);
+                prefClick(pref, table);
                 break;
             case "buildings":
-                if( AddSubPreferenceFragment.building==null){
+                if (AddSubPreferenceFragment.building == null) {
                     AddSubPreferenceFragment.building = "temp";
                 }
                 pref.setSummary(AddSubPreferenceFragment.building);
-                prefClick(pref,table);
+                prefClick(pref, table);
                 break;
             case "room":
-                if( AddSubPreferenceFragment.room==null){
+                if (AddSubPreferenceFragment.room == null) {
                     AddSubPreferenceFragment.room = "temp";
                 }
                 pref.setSummary(AddSubPreferenceFragment.room);
                 break;
             case "teachers":
-                if( AddSubPreferenceFragment.teacher==null){
+                if (AddSubPreferenceFragment.teacher == null) {
                     AddSubPreferenceFragment.teacher = "temp";
                 }
                 pref.setSummary(AddSubPreferenceFragment.teacher);
-                prefClick(pref,table);
+                prefClick(pref, table);
                 break;
             case "lesson_type":
-                if( AddSubPreferenceFragment.type==null){
+                if (AddSubPreferenceFragment.type == null) {
                     AddSubPreferenceFragment.type = "temp";
                 }
                 pref.setSummary(AddSubPreferenceFragment.type);
-                prefClick(pref,table);
+                prefClick(pref, table);
                 break;
         }
-
 
 
     }
 
 
-
-    public void prefClick(Preference preference, final String table){
+    public void prefClick(Preference preference, final String table) {
 
         preference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override

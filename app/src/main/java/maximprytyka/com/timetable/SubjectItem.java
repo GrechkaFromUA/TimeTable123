@@ -10,6 +10,8 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -27,10 +29,6 @@ import static maximprytyka.com.timetable.R.id.icon;
 import static maximprytyka.com.timetable.R.id.visible;
 import static maximprytyka.com.timetable.R.id.wrap_content;
 
-/**
- * Created by maksimkuc on 8/24/17.
- */
-
 public class SubjectItem {
 
     private String time;
@@ -43,10 +41,10 @@ public class SubjectItem {
 
     private String dayName;
 
-    private  Activity ac;
+    private Activity ac;
 
 
-    public SubjectItem(String time, String subject, String room, String teacher, String type, String building, Activity ac,boolean edit,String dayName) {
+    public SubjectItem(String time, String subject, String room, String teacher, String type, String building, Activity ac, boolean edit, String dayName) {
         this.time = time;
         this.subject = subject;
         this.room = room;
@@ -59,11 +57,10 @@ public class SubjectItem {
     }
 
 
-
-    public LinearLayout item(){
+    public LinearLayout item() {
         LayoutInflater li = (LayoutInflater) ac.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        LinearLayout ll = (LinearLayout) li.inflate(R.layout.list_item,null,false);
+        LinearLayout ll = (LinearLayout) li.inflate(R.layout.list_item, null, false);
         TextView subject = (TextView) ll.findViewById(R.id.sub);
         subject.setText(this.subject);
 
@@ -74,7 +71,7 @@ public class SubjectItem {
         type.setText(this.type);
 
 
-         if( !this.time.equals("temp")) {
+        if (!this.time.equals("temp")) {
             String ttime[] = this.time.split(" ");
 
 
@@ -83,7 +80,7 @@ public class SubjectItem {
 
             TextView timeEnd = (TextView) ll.findViewById(R.id.etime);
             timeEnd.setText(ttime[2]);
-        }else{
+        } else {
 
             TextView timeStart = (TextView) ll.findViewById(R.id.stime);
             timeStart.setText("-");
@@ -103,33 +100,35 @@ public class SubjectItem {
 
         LinearLayout.LayoutParams parametrs = (LinearLayout.LayoutParams) butLoy.getLayoutParams();
 
-        Button b = (Button) ll.findViewById(R.id.remove_button);
 
-        if(edit == true) {
+        Animation animation;
+        animation = AnimationUtils.loadAnimation(ac,
+                R.anim.move_left);
+
+        if (edit == true) {
 
             butLoy.setVisibility(LinearLayout.VISIBLE);
-           // b.setVisibility(Button.VISIBLE);
-        }else{
+            // b.setVisibility(Button.VISIBLE);
+        } else {
             parametrs.height = 0;
             parametrs.weight = 0;
-           // b.setHeight(0);
-           // b.setWidth(0);
-           // b.setVisibility(Button.INVISIBLE);
+            // b.setHeight(0);
+            // b.setWidth(0);
+            // b.setVisibility(Button.INVISIBLE);
         }
         butLoy.setLayoutParams(parametrs);
-
+        butLoy.startAnimation(animation);
         Button del_but = (Button) ll.findViewById(R.id.remove_button);
 
-        final String query = "DELETE FROM "+dayName+" WHERE " +
-                "subject LIKE '%"+this.subject+"%' AND " +
-                "time LIKE '%"+this.time+"%' AND " +
-                "building LIKE '%"+this.building+"%' AND " +
-                "room LIKE '%"+this.room+"%' AND " +
-                "teacher LIKE '%"+this.teacher+"%' AND " +
-                "type LIKE '%"+this.type+"%' ";
+        final String query = "DELETE FROM " + dayName + " WHERE " +
+                "subject LIKE '%" + this.subject + "%' AND " +
+                "time LIKE '%" + this.time + "%' AND " +
+                "building LIKE '%" + this.building + "%' AND " +
+                "room LIKE '%" + this.room + "%' AND " +
+                "teacher LIKE '%" + this.teacher + "%' AND " +
+                "type LIKE '%" + this.type + "%' ";
 
         del_but.setOnClickListener(new View.OnClickListener() {
-
 
 
             @Override
@@ -139,7 +138,7 @@ public class SubjectItem {
                 db.execSQL(query);
                 db.close();
 
-                MethodHelper.swap=1;
+                MethodHelper.swap = 1;
                 ac.getFragmentManager().beginTransaction().replace(R.id.content_frame, new MainScreenFragment()).commit();
             }
         });
@@ -151,46 +150,42 @@ public class SubjectItem {
             public void onClick(View view) {
 
                 writeStaticVars();
-                ac.getFragmentManager().beginTransaction().replace(R.id.frame, new AddSubFragment(dayName,true)).commit();
+                ac.getFragmentManager().beginTransaction().replace(R.id.frame, new AddSubFragment(dayName, true)).commit();
 
 
             }
         });
 
 
-
-
         LinearLayout temp = (LinearLayout) ll.findViewById(R.id.main_sub);
 
-        final LinearLayout.LayoutParams params  = new LinearLayout.LayoutParams(
+        final LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
 
-        if(edit==true){
+        if (edit == true) {
             params.weight = 100f;
-        }else{
+        } else {
             params.weight = 0f;
         }
 
         temp.setLayoutParams(params);
 
 
-
-      return  ll;
+        return ll;
     }
+    
+    public void writeStaticVars() {
+
+        AddSubPreferenceFragment.subject = this.subject;
+        AddSubPreferenceFragment.time = this.time;
+        AddSubPreferenceFragment.building = this.building;
+        AddSubPreferenceFragment.room = this.room;
+        AddSubPreferenceFragment.teacher = this.teacher;
+        AddSubPreferenceFragment.type = this.type;
 
 
-public void writeStaticVars(){
-
-    AddSubPreferenceFragment.subject = this.subject;
-    AddSubPreferenceFragment.time = this.time;
-    AddSubPreferenceFragment.building = this.building;
-    AddSubPreferenceFragment.room = this.room;
-    AddSubPreferenceFragment.teacher = this.teacher;
-    AddSubPreferenceFragment.type = this.type;
-
-
-}
+    }
 
 
 }

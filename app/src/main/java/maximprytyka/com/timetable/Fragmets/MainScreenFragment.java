@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+
 import java.util.ArrayList;
 
 import maximprytyka.com.timetable.DBHelper;
@@ -22,37 +23,27 @@ import maximprytyka.com.timetable.MethodHelper;
 import maximprytyka.com.timetable.R;
 
 
-
 public class MainScreenFragment extends Fragment {
 
-     String[] days = {"monday","tuesday","wednesday","thursday","friday","saturday","sunday"};
+    String[] days = {"monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"};
 
     DBHelper dbHelper;
+
     @TargetApi(Build.VERSION_CODES.M)
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 
-
-
-
-        final View v = inflater.inflate(R.layout.fragment_example,container,false);
+        final View v = inflater.inflate(R.layout.fragment_example, container, false);
         final FragmentManager fm = getFragmentManager();
 
 
-
-
-
-
-
         //Connect DB
-        dbHelper= new DBHelper(getActivity());
+        dbHelper = new DBHelper(getActivity());
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         //Find view witch contain  day item
-
-
 
 
         //FAB initialization
@@ -63,11 +54,10 @@ public class MainScreenFragment extends Fragment {
         fab.setClickable(true);
 
 
-
-        if(MethodHelper.swap == 0) {
+        if (MethodHelper.swap == 0) {
             startMain(v, fab);
-        }else{
-            startMainEditable(v,fab);
+        } else {
+            startMainEditable(v, fab);
         }
 
 
@@ -76,38 +66,17 @@ public class MainScreenFragment extends Fragment {
             public void onClick(View view) {
 
 
-
-                switch (MethodHelper.swap){
-                    case 0 :
-
-
-
-
-                        startMainEditable(v,fab);
-
+                switch (MethodHelper.swap) {
+                    case 0:
+                        startMainEditable(v, fab);
                         break;
-
                     case 1:
-
-
-                        startMain(v,fab);
+                        startMain(v, fab);
                         break;
-
-
-
-
-
                 }
-
-
-
-
 
             }
         });
-
-
-
 
 
         return v;
@@ -121,15 +90,15 @@ public class MainScreenFragment extends Fragment {
     }
 
 
-    public ArrayList<String> getAllData(String day){
-        String columns[] = new String[]{"time","subject","room","teacher","type","building"};
+    public ArrayList<String> getAllData(String day) {
+        String columns[] = new String[]{"time", "subject", "room", "teacher", "type", "building"};
         ArrayList<String> data = new ArrayList<>();
 
-        for(int i =0;i<columns.length;i++){
+        for (int i = 0; i < columns.length; i++) {
 
-            for(int j=0;j<getData(day,columns[i]).length;j++){
+            for (int j = 0; j < getData(day, columns[i]).length; j++) {
 
-                data.add(getData(day,columns[i])[j]);
+                data.add(getData(day, columns[i])[j]);
 
             }
 
@@ -137,17 +106,16 @@ public class MainScreenFragment extends Fragment {
         }
 
 
-
         return data;
     }
 
-    public String[] getData(String day,String column){
-        Cursor cursor = dbHelper.getReadableDatabase().rawQuery("SELECT * FROM "+ day, null);
+    public String[] getData(String day, String column) {
+        Cursor cursor = dbHelper.getReadableDatabase().rawQuery("SELECT * FROM " + day, null);
         cursor.moveToFirst();
         ArrayList<String> names = new ArrayList<>();
 
 
-        while(!cursor.isAfterLast()) {
+        while (!cursor.isAfterLast()) {
             names.add(cursor.getString(cursor.getColumnIndex(column)));
             cursor.moveToNext();
         }
@@ -167,7 +135,7 @@ public class MainScreenFragment extends Fragment {
     }
 
 
-    public void startMain(View v, FloatingActionButton fab){
+    public void startMain(View v, FloatingActionButton fab) {
 
         MethodHelper.swap = 0;
 
@@ -177,29 +145,28 @@ public class MainScreenFragment extends Fragment {
 
         LinearLayout lv = (LinearLayout) v.findViewById(R.id.lvMain);
 
-        int countOfRows=0;
+        int countOfRows = 0;
 
 
         for (int i = 0; i < 7; i++) {
-            if(getRowCount(days[i]) == 0 ){
+            if (getRowCount(days[i]) == 0) {
 
 
+            } else {
 
-            }else {
-
-                View temp = new DayItem(getAllData(days[i]),days[i],getActivity(),false).itemDay();
+                View temp = new DayItem(getAllData(days[i]), days[i], getActivity(), false).itemDay();
 
                 lv.addView(temp);
 
 
             }
-            countOfRows+=getRowCount(days[i]);
+            countOfRows += getRowCount(days[i]);
 
         }
 
     }
 
-    public void removeAllView(View v){
+    public void removeAllView(View v) {
 
         LinearLayout lv = (LinearLayout) v.findViewById(R.id.lvMain);
 
@@ -208,34 +175,32 @@ public class MainScreenFragment extends Fragment {
 
     }
 
-    public void startMainEditable(View v,FloatingActionButton fab){
+    public void startMainEditable(View v, FloatingActionButton fab) {
 
 
-        MethodHelper.swap=1;
+        MethodHelper.swap = 1;
 
         removeAllView(v);
 
         fab.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_accept));
 
         LinearLayout lv = (LinearLayout) v.findViewById(R.id.lvMain);
-        int countOfRows=0;
+        int countOfRows = 0;
 
 
         for (int i = 0; i < 7; i++) {
 
 
-                View temp = new DayItem(getAllData(days[i]),days[i],getActivity(),true).itemDay();
+            View temp = new DayItem(getAllData(days[i]), days[i], getActivity(), true).itemDay();
 
-                lv.addView(temp);
+            lv.addView(temp);
 
 
-
-            countOfRows+=getRowCount(days[i]);
+            countOfRows += getRowCount(days[i]);
 
         }
 
     }
-
 
 
 }

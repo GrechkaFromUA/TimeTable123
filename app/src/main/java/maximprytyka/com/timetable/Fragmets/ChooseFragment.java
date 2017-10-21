@@ -31,7 +31,7 @@ import maximprytyka.com.timetable.R;
 import static maximprytyka.com.timetable.DBHelper.KEY_VALUE;
 
 
-public class ChooseFragment extends Fragment{
+public class ChooseFragment extends Fragment {
 
     private String day;
     private String table;
@@ -39,7 +39,7 @@ public class ChooseFragment extends Fragment{
     ArrayList<String> values = new ArrayList<>();
     ArrayAdapter<String> adapter;
 
-    public ChooseFragment(String table,String day) {
+    public ChooseFragment(String table, String day) {
         this.day = day;
         this.table = table;
     }
@@ -49,20 +49,20 @@ public class ChooseFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View v = inflater.inflate(R.layout.fragment_choose,container,false);
+        View v = inflater.inflate(R.layout.fragment_choose, container, false);
 
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
 
-       lv = (ListView) v.findViewById(R.id.choose_list);
+        lv = (ListView) v.findViewById(R.id.choose_list);
 
         MethodHelper mh = new MethodHelper();
         DBHelper dbHelper = new DBHelper(getActivity());
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
-        values = mh.readFromDB(values,db,table);
+        values = mh.readFromDB(values, db, table);
 
-        adapter =  new ArrayAdapter<>(getActivity(), android.R.layout.simple_expandable_list_item_1, values);
+        adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_expandable_list_item_1, values);
 
         lv.setAdapter(adapter);
 
@@ -78,7 +78,7 @@ public class ChooseFragment extends Fragment{
                         break;
 
                     case "time":
-                            AddSubPreferenceFragment.time = (String) ((TextView) view).getText();
+                        AddSubPreferenceFragment.time = (String) ((TextView) view).getText();
                         getFragmentManager().beginTransaction().replace(R.id.frame, new AddSubFragment(day)).commit();
                         break;
                     case "buildings":
@@ -100,19 +100,8 @@ public class ChooseFragment extends Fragment{
         });
 
 
-
-
         return v;
     }
-
-
-
-
-
-
-
-
-
 
 
 }

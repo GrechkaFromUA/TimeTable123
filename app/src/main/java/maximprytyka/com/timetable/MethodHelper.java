@@ -28,13 +28,12 @@ import maximprytyka.com.timetable.Fragmets.AddSubPreferenceFragment;
 
 public class MethodHelper {
 
-    public static int swap=0;
+    public static int swap = 0;
 
 
+    public ArrayList<String> readFromDB(ArrayList<String> values, SQLiteDatabase db, String table) {
 
-    public ArrayList<String> readFromDB(ArrayList<String> values,SQLiteDatabase db,String table){
-
-        Cursor cursor = db.query(table, null, null, null, null,null,DBHelper.KEY_VALUE +" ASC",null);
+        Cursor cursor = db.query(table, null, null, null, null, null, DBHelper.KEY_VALUE + " ASC", null);
 
         if (cursor.moveToFirst()) {
             int valueIndex = cursor.getColumnIndex(DBHelper.KEY_VALUE);
@@ -52,11 +51,7 @@ public class MethodHelper {
     }
 
 
-
-
-
-    public void fabClick(final Activity ac, final String table, final ArrayList<String> values, final SQLiteDatabase db, final ArrayAdapter<String> adapter){
-
+    public void fabClick(final Activity ac, final String table, final ArrayList<String> values, final SQLiteDatabase db, final ArrayAdapter<String> adapter) {
 
 
         final EditText et = new TextInputEditText(ac);
@@ -64,7 +59,7 @@ public class MethodHelper {
         et.post(new Runnable() {
             public void run() {
                 et.requestFocusFromTouch();
-                InputMethodManager lManager = (InputMethodManager)ac.getSystemService(Context.INPUT_METHOD_SERVICE);
+                InputMethodManager lManager = (InputMethodManager) ac.getSystemService(Context.INPUT_METHOD_SERVICE);
                 lManager.showSoftInput(et, 0);
             }
         });
@@ -74,8 +69,8 @@ public class MethodHelper {
         builder.setTitle(R.string.alert_add)
                 .setView(et)
                 .setCancelable(true)
-                .setPositiveButton(R.string.alert_add,null)
-                .setNegativeButton(R.string.alert_cancel,null);
+                .setPositiveButton(R.string.alert_add, null)
+                .setNegativeButton(R.string.alert_cancel, null);
 
         final AlertDialog alert = builder.create();
 
@@ -83,7 +78,7 @@ public class MethodHelper {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    newAdd(et, alert,values,ac,db,table,adapter);
+                    newAdd(et, alert, values, ac, db, table, adapter);
                     return true;
                 }
                 return false;
@@ -99,7 +94,7 @@ public class MethodHelper {
 
                     @Override
                     public void onClick(View view) {
-                        newAdd(et, alert,values,ac,db,table,adapter);
+                        newAdd(et, alert, values, ac, db, table, adapter);
 
                     }
                 });
@@ -109,35 +104,26 @@ public class MethodHelper {
         alert.show();
 
 
-
     }
 
 
-
-
-
-
-
-
-    private void newAdd(EditText et, AlertDialog alert, ArrayList<String> values, Activity ac, SQLiteDatabase db, String table, ArrayAdapter<String> adapter){
+    private void newAdd(EditText et, AlertDialog alert, ArrayList<String> values, Activity ac, SQLiteDatabase db, String table, ArrayAdapter<String> adapter) {
         if (!et.getText().toString().isEmpty() && !values.contains(et.getText().toString())) {
             Toast.makeText(ac,
                     R.string.success_add,
                     Toast.LENGTH_SHORT).show();
             ContentValues cv = new ContentValues();
-            cv.put("value",et.getText().toString());
-            db.insert(table,null,cv);
+            cv.put("value", et.getText().toString());
+            db.insert(table, null, cv);
 
             values.add(et.getText().toString());
             adapter.notifyDataSetChanged();
             alert.dismiss();
-        }else if(values.contains(et.getText().toString())){
+        } else if (values.contains(et.getText().toString())) {
             Toast.makeText(ac,
                     R.string.error_same_value,
                     Toast.LENGTH_SHORT).show();
-        }
-
-        else  {
+        } else {
             Toast.makeText(ac,
                     R.string.error_add,
                     Toast.LENGTH_SHORT).show();
@@ -145,11 +131,7 @@ public class MethodHelper {
     }
 
 
-
-
-
-
-    public void showPopupMenu(final View v, final Activity ac, final SQLiteDatabase db, final ArrayList<String> values, final ArrayAdapter<String> adapter,final String table) {
+    public void showPopupMenu(final View v, final Activity ac, final SQLiteDatabase db, final ArrayList<String> values, final ArrayAdapter<String> adapter, final String table) {
         PopupMenu popupMenu = new PopupMenu(ac, v);
 
         popupMenu.inflate(R.menu.popupmenu);
@@ -163,15 +145,13 @@ public class MethodHelper {
                         // Toast.makeText(PopupMenuDemoActivity.this,
                         // item.toString(), Toast.LENGTH_LONG).show();
                         // return true;
-                       final String var = ((TextView) v).getText().toString();
+                        final String var = ((TextView) v).getText().toString();
                         switch (item.getItemId()) {
 
                             case R.id.del:
 
 
-                                db.delete(table,"value=?", new String[]{var});
-
-
+                                db.delete(table, "value=?", new String[]{var});
 
 
                                 values.remove(var);
@@ -188,19 +168,17 @@ public class MethodHelper {
                                 et.post(new Runnable() {
                                     public void run() {
                                         et.requestFocusFromTouch();
-                                        InputMethodManager lManager = (InputMethodManager)ac.getSystemService(Context.INPUT_METHOD_SERVICE);
+                                        InputMethodManager lManager = (InputMethodManager) ac.getSystemService(Context.INPUT_METHOD_SERVICE);
                                         lManager.showSoftInput(et, 0);
                                     }
                                 });
-
-
 
 
                                 final AlertDialog.Builder builder = new AlertDialog.Builder(ac);
                                 builder.setTitle(R.string.rename)
                                         .setView(et)
                                         .setCancelable(true)
-                                        .setPositiveButton(R.string.rename,null)
+                                        .setPositiveButton(R.string.rename, null)
                                         .setNegativeButton(R.string.alert_cancel, null);
 
                                 final AlertDialog alert = builder.create();
@@ -209,7 +187,7 @@ public class MethodHelper {
                                     @Override
                                     public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                                         if (actionId == EditorInfo.IME_ACTION_DONE) {
-                                            renameVal(et,var,alert,db,values,adapter,ac,table);
+                                            renameVal(et, var, alert, db, values, adapter, ac, table);
 
                                             return true;
                                         }
@@ -226,14 +204,13 @@ public class MethodHelper {
 
                                             @Override
                                             public void onClick(View view) {
-                                                renameVal(et,var,alert,db,values,adapter,ac,table);
+                                                renameVal(et, var, alert, db, values, adapter, ac, table);
 
                                             }
                                         });
 
                                     }
                                 });
-
 
 
                                 alert.show();
@@ -251,12 +228,8 @@ public class MethodHelper {
     }
 
 
-
-
-
-
-    private void renameVal(EditText et,String var,AlertDialog alert,SQLiteDatabase db, ArrayList<String> values, ArrayAdapter<String> adapter,Activity ac,String table){
-        if(!et.getText().toString().isEmpty()) {
+    private void renameVal(EditText et, String var, AlertDialog alert, SQLiteDatabase db, ArrayList<String> values, ArrayAdapter<String> adapter, Activity ac, String table) {
+        if (!et.getText().toString().isEmpty()) {
 
             ContentValues cv = new ContentValues();
             cv.put("value", et.getText().toString());
@@ -268,37 +241,31 @@ public class MethodHelper {
             adapter.notifyDataSetChanged();
 
             alert.dismiss();
-        }else Toast.makeText(ac, R.string.error_add,Toast.LENGTH_SHORT).show();
+        } else Toast.makeText(ac, R.string.error_add, Toast.LENGTH_SHORT).show();
     }
 
 
+    public void cleareTable(SQLiteDatabase db, String table, Activity ac, ArrayList<String> values, ArrayAdapter<String> adapter) {
 
 
-    public void cleareTable(SQLiteDatabase db,String table,Activity ac,ArrayList<String> values,ArrayAdapter<String> adapter){
-
-
-        db.delete(table,null,null);
+        db.delete(table, null, null);
         values.clear();
         adapter.notifyDataSetChanged();
 
 
-
-
-        Toast.makeText(ac,R.string.action_clear_all_done, Toast.LENGTH_SHORT).show();
-
+        Toast.makeText(ac, R.string.action_clear_all_done, Toast.LENGTH_SHORT).show();
 
 
     }
 
 
-    public void clearStaticVars(){
+    public void clearStaticVars() {
         AddSubPreferenceFragment.subject = null;
         AddSubPreferenceFragment.time = null;
         AddSubPreferenceFragment.room = null;
         AddSubPreferenceFragment.building = null;
         AddSubPreferenceFragment.teacher = null;
         AddSubPreferenceFragment.type = null;
-
 
 
     }

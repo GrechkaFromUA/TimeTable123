@@ -5,7 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-public class DBHelper  extends SQLiteOpenHelper{
+public class DBHelper extends SQLiteOpenHelper {
 
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "DBTimeTable";
@@ -27,41 +27,40 @@ public class DBHelper  extends SQLiteOpenHelper{
     public static final String KEY_VALUE_END = "value end";
 
 
-
-
     public DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table  "+TABLE_TEACHERS+" ("+KEY_ID+" integer primary key,"+KEY_VALUE+" text)");
-        db.execSQL("create table  "+TABLE_SUB+" ("+KEY_ID+" integer primary key,"+KEY_VALUE+" text)");
-        db.execSQL("create table  "+TABLE_MON+" (time text,subject text, room text, teacher text,type text, building text)");
-        db.execSQL("create table  "+TABLE_TUE+" (time text,subject text, room text, teacher text,type text, building text)");
-        db.execSQL("create table  "+TABLE_WEN+" (time text,subject text, room text, teacher text,type text, building text)");
-        db.execSQL("create table  "+TABLE_THU+" (time text,subject text, room text, teacher text,type text, building text)");
-        db.execSQL("create table  "+TABLE_FRI+" (time text,subject text, room text, teacher text,type text, building text)");
-        db.execSQL("create table  "+TABLE_SAT+" (time text,subject text, room text, teacher text,type text, building text)");
-        db.execSQL("create table  "+TABLE_SUN+" (time text,subject text, room text, teacher text,type text, building text)");
+        db.execSQL("create table  " + TABLE_TEACHERS + " (" + KEY_ID + " integer primary key," + KEY_VALUE + " text)");
+        db.execSQL("create table  " + TABLE_SUB + " (" + KEY_ID + " integer primary key," + KEY_VALUE + " text)");
+        db.execSQL("create table  " + TABLE_MON + " (time text,subject text, room text, teacher text,type text, building text)");
+        db.execSQL("create table  " + TABLE_TUE + " (time text,subject text, room text, teacher text,type text, building text)");
+        db.execSQL("create table  " + TABLE_WEN + " (time text,subject text, room text, teacher text,type text, building text)");
+        db.execSQL("create table  " + TABLE_THU + " (time text,subject text, room text, teacher text,type text, building text)");
+        db.execSQL("create table  " + TABLE_FRI + " (time text,subject text, room text, teacher text,type text, building text)");
+        db.execSQL("create table  " + TABLE_SAT + " (time text,subject text, room text, teacher text,type text, building text)");
+        db.execSQL("create table  " + TABLE_SUN + " (time text,subject text, room text, teacher text,type text, building text)");
 
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS  "+ TABLE_TEACHERS);
-        db.execSQL("DROP TABLE IF EXISTS  "+ TABLE_SUB);
-        db.execSQL("DROP TABLE IF EXISTS  "+ TABLE_MON);
-        db.execSQL("DROP TABLE IF EXISTS  "+ TABLE_TUE);
-        db.execSQL("DROP TABLE IF EXISTS  "+ TABLE_WEN);
-        db.execSQL("DROP TABLE IF EXISTS  "+ TABLE_THU);
-        db.execSQL("DROP TABLE IF EXISTS  "+ TABLE_FRI);
-        db.execSQL("DROP TABLE IF EXISTS  "+ TABLE_SAT);
-        db.execSQL("DROP TABLE IF EXISTS  "+ TABLE_SUN);
+        db.execSQL("DROP TABLE IF EXISTS  " + TABLE_TEACHERS);
+        db.execSQL("DROP TABLE IF EXISTS  " + TABLE_SUB);
+        db.execSQL("DROP TABLE IF EXISTS  " + TABLE_MON);
+        db.execSQL("DROP TABLE IF EXISTS  " + TABLE_TUE);
+        db.execSQL("DROP TABLE IF EXISTS  " + TABLE_WEN);
+        db.execSQL("DROP TABLE IF EXISTS  " + TABLE_THU);
+        db.execSQL("DROP TABLE IF EXISTS  " + TABLE_FRI);
+        db.execSQL("DROP TABLE IF EXISTS  " + TABLE_SAT);
+        db.execSQL("DROP TABLE IF EXISTS  " + TABLE_SUN);
 
         onCreate(db);
 
     }
+
     public int getProfilesCount(String table) {
         String countQuery = "SELECT  * FROM " + table;
         SQLiteDatabase db = this.getReadableDatabase();
@@ -71,37 +70,37 @@ public class DBHelper  extends SQLiteOpenHelper{
         return cnt;
     }
 
-    public static String getNameTableByNumb(int i){
+    public static String getNameTableByNumb(int i) {
         String temp = null;
 
-        switch(i){
+        switch (i) {
 
             case 1:
-                temp=TABLE_MON;
+                temp = TABLE_MON;
 
                 break;
             case 2:
-                temp=TABLE_TUE;
+                temp = TABLE_TUE;
 
                 break;
             case 3:
-                temp=TABLE_WEN;
+                temp = TABLE_WEN;
 
                 break;
             case 4:
-                temp=TABLE_THU;
+                temp = TABLE_THU;
 
                 break;
             case 5:
-                temp=TABLE_FRI;
+                temp = TABLE_FRI;
 
                 break;
             case 6:
-                temp=TABLE_SAT;
+                temp = TABLE_SAT;
 
                 break;
             case 7:
-                temp=TABLE_SUN;
+                temp = TABLE_SUN;
 
                 break;
 

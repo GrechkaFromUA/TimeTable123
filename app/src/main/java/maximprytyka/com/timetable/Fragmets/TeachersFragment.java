@@ -35,7 +35,7 @@ import static maximprytyka.com.timetable.DBHelper.KEY_VALUE;
 import static maximprytyka.com.timetable.R.*;
 
 
-public class TeachersFragment extends Fragment{
+public class TeachersFragment extends Fragment {
 
     private ListView lv;
     ArrayList<String> values = new ArrayList<>();
@@ -47,13 +47,14 @@ public class TeachersFragment extends Fragment{
 
 
     ArrayAdapter<String> adapter;
+
     @TargetApi(Build.VERSION_CODES.M)
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 
-        View v = inflater.inflate(layout.fragment_teachers,container,false);
+        View v = inflater.inflate(layout.fragment_teachers, container, false);
 
         final FragmentManager fm = getFragmentManager();
 
@@ -68,79 +69,48 @@ public class TeachersFragment extends Fragment{
 
         dbHelper = new DBHelper(getActivity());
         db = dbHelper.getWritableDatabase();
-        db.execSQL("create table if not exists "+table+" ("+DBHelper.KEY_ID+" integer primary key,"+KEY_VALUE+" text)");
+        db.execSQL("create table if not exists " + table + " (" + DBHelper.KEY_ID + " integer primary key," + KEY_VALUE + " text)");
 
         lv = (ListView) v.findViewById(id.listView);
 
 
-       mh = new MethodHelper();
-
-
-
-
-
-
+        mh = new MethodHelper();
 
 
         //put From DB
 
 
-
-        values =   mh.readFromDB(values,db,table);
+        values = mh.readFromDB(values, db, table);
 
         //Start create a items
 
-        adapter =  new ArrayAdapter<String>(getActivity(), android.R.layout.simple_expandable_list_item_1, values);
+        adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_expandable_list_item_1, values);
 
         lv.setAdapter(adapter);
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                mh.fabClick(getActivity(),table,values,db,adapter);
+                mh.fabClick(getActivity(), table, values, db, adapter);
 
             }
         });
-
-
 
 
         lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
-                    mh.showPopupMenu(view,getActivity(),db,values,adapter,table);
+                mh.showPopupMenu(view, getActivity(), db, values, adapter, table);
                 return false;
             }
         });
 
 
-
-
-
-
-
         return v;
     }
-
-
-
-
 
 
     @Override
@@ -153,7 +123,7 @@ public class TeachersFragment extends Fragment{
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.clear_all:
-                mh.cleareTable(db,table,getActivity(),values,adapter);
+                mh.cleareTable(db, table, getActivity(), values, adapter);
                 return true;
             case R.id.exit:
                 //Реалізовано в MainActivity
@@ -164,10 +134,6 @@ public class TeachersFragment extends Fragment{
 
         return false;
     }
-
-
-
-
 
 
 }

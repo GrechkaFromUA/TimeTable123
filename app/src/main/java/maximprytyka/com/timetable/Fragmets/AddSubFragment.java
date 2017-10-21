@@ -37,7 +37,7 @@ public class AddSubFragment extends Fragment {
 
     public AddSubFragment(String day) {
         this.day = day;
-        edit=false;
+        edit = false;
     }
 
     public AddSubFragment(String day, boolean edit) {
@@ -54,10 +54,10 @@ public class AddSubFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_content_add, container, false);
         FragmentManager fm = getFragmentManager(); //Фрагмент менеджер
 
-        if(edit==false) {
+        if (edit == false) {
             fm.beginTransaction().replace(R.id.frame, new AddSubPreferenceFragment(day)).commit();
-        }else {
-            fm.beginTransaction().replace(R.id.frame, new AddSubPreferenceFragment(day,true)).commit();
+        } else {
+            fm.beginTransaction().replace(R.id.frame, new AddSubPreferenceFragment(day, true)).commit();
         }
         FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.fab);
         fab.bringToFront();
@@ -65,43 +65,33 @@ public class AddSubFragment extends Fragment {
         fab.setClickable(true);
 
 
-
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                if(edit == false){
-
+                if (edit == false) {
 
 
                     DBHelper dbHelper = new DBHelper(getActivity());
                     SQLiteDatabase db = dbHelper.getWritableDatabase();
 
 
-
-
-
-
-                    db.execSQL("INSERT INTO "+day+"(subject,teacher,room,building,time,type) VALUES ( '"
-                            +AddSubPreferenceFragment.subject+"','"
-                            +AddSubPreferenceFragment.teacher+"','"
-                            +AddSubPreferenceFragment.room+"','"
-                            +AddSubPreferenceFragment.building+"','"
-                            +AddSubPreferenceFragment.time+"','"+
-                            AddSubPreferenceFragment.type+"')");
+                    db.execSQL("INSERT INTO " + day + "(subject,teacher,room,building,time,type) VALUES ( '"
+                            + AddSubPreferenceFragment.subject + "','"
+                            + AddSubPreferenceFragment.teacher + "','"
+                            + AddSubPreferenceFragment.room + "','"
+                            + AddSubPreferenceFragment.building + "','"
+                            + AddSubPreferenceFragment.time + "','" +
+                            AddSubPreferenceFragment.type + "')");
 
                     db.close();
 
-                    MethodHelper.swap=1;
+                    MethodHelper.swap = 1;
 
                     getFragmentManager().beginTransaction().replace(R.id.content_frame, new MainScreenFragment()).commit();
 
 
-                }else{
-
-
-
-
+                } else {
 
 
                 }
@@ -112,12 +102,8 @@ public class AddSubFragment extends Fragment {
         });
 
 
-
-
         return v;
     }
-
-
 
 
 }

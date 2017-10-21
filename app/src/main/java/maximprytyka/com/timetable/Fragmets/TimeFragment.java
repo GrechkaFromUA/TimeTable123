@@ -64,12 +64,12 @@ public class TimeFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_time,container,false);
+        View v = inflater.inflate(R.layout.fragment_time, container, false);
 
         dbHelper = new DBHelper((getActivity()));
         db = dbHelper.getWritableDatabase();
 
-        db.execSQL("create table if not exists "+table+" ("+ DBHelper.KEY_ID+" integer primary key,"+KEY_VALUE+" text)");
+        db.execSQL("create table if not exists " + table + " (" + DBHelper.KEY_ID + " integer primary key," + KEY_VALUE + " text)");
 
         fm = getFragmentManager();
 
@@ -79,23 +79,18 @@ public class TimeFragment extends Fragment {
         final FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.fab);
         fab.bringToFront();
 
-        mh= new MethodHelper();
+        mh = new MethodHelper();
 
         lv = (ListView) v.findViewById(R.id.listView);
 
-        values = mh.readFromDB(values,db,table);
+        values = mh.readFromDB(values, db, table);
 
 
-
-        
-
-        for(String counter: values){
-            Log.d("mLog",counter);
+        for (String counter : values) {
+            Log.d("mLog", counter);
         }
-        adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_expandable_list_item_1,values);
+        adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_expandable_list_item_1, values);
         lv.setAdapter(adapter);
-
-
 
 
         fab.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_plus));
@@ -103,27 +98,23 @@ public class TimeFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                fm.beginTransaction().setCustomAnimations(R.animator.slide_in_left2,R.animator.slide_in_right2).replace(R.id.content_frame, new TimeAddFragment(true,values)).commit(); //Заміна фрагмента по нажаттю кнопки
+                fm.beginTransaction().setCustomAnimations(R.animator.slide_in_left2, R.animator.slide_in_right2).replace(R.id.content_frame, new TimeAddFragment(true, values)).commit(); //Заміна фрагмента по нажаттю кнопки
             }
         });
-
-
 
 
         lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
-                showPopupMenu(view,getActivity());
+                showPopupMenu(view, getActivity());
                 return false;
             }
         });
 
 
-
         return v;
     }
-
 
 
     public void showPopupMenu(final View v, final Activity ac) {
@@ -143,7 +134,7 @@ public class TimeFragment extends Fragment {
                         final String var = ((TextView) v).getText().toString();
                         String sp1 = ":";
                         String sp2 = " - ";
-                        String res = var.replaceAll(sp2,sp1);
+                        String res = var.replaceAll(sp2, sp1);
                         String times[] = res.split(sp1);
 
                         switch (item.getItemId()) {
@@ -151,9 +142,7 @@ public class TimeFragment extends Fragment {
                             case R.id.del:
 
 
-                                db.delete(table,"value=?", new String[]{var});
-
-
+                                db.delete(table, "value=?", new String[]{var});
 
 
                                 values.remove(var);
@@ -163,7 +152,7 @@ public class TimeFragment extends Fragment {
                                 return true;
                             case R.id.rename:
 
-                                fm.beginTransaction().setCustomAnimations(R.animator.slide_in_left2,R.animator.slide_in_right2).replace(R.id.content_frame, new TimeAddFragment(false,Integer.parseInt(times[1]),Integer.parseInt(times[0]),Integer.parseInt(times[3]),Integer.parseInt(times[2]),var,values)).commit(); //Заміна фрагмента по нажаттю кнопки
+                                fm.beginTransaction().setCustomAnimations(R.animator.slide_in_left2, R.animator.slide_in_right2).replace(R.id.content_frame, new TimeAddFragment(false, Integer.parseInt(times[1]), Integer.parseInt(times[0]), Integer.parseInt(times[3]), Integer.parseInt(times[2]), var, values)).commit(); //Заміна фрагмента по нажаттю кнопки
 
                                 return true;
 
@@ -178,8 +167,6 @@ public class TimeFragment extends Fragment {
     }
 
 
-
-
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         // Do something that differs the Activity's menu here
@@ -190,7 +177,7 @@ public class TimeFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.clear_all:
-                mh.cleareTable(db,table,getActivity(),values,adapter);
+                mh.cleareTable(db, table, getActivity(), values, adapter);
                 return true;
             case R.id.exit:
                 //Реалізовано в MainActivity
@@ -201,7 +188,6 @@ public class TimeFragment extends Fragment {
 
         return false;
     }
-
 
 
 }
