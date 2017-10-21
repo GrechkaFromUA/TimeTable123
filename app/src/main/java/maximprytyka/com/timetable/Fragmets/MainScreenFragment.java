@@ -154,7 +154,7 @@ public class MainScreenFragment extends Fragment {
 
             } else {
 
-                View temp = new DayItem(getAllData(days[i]), days[i], getActivity(), false,animated).itemDay();
+                View temp = new DayItem(getAllData(days[i]), days[i], getActivity(), false,false).itemDay();
 
                 lv.addView(temp);
 
@@ -189,9 +189,14 @@ public class MainScreenFragment extends Fragment {
 
 
         for (int i = 0; i < 7; i++) {
+            boolean textAnim=false;
+            if (getRowCount(days[i]) == 0) {
 
+                textAnim = true;
 
-            View temp = new DayItem(getAllData(days[i]), days[i], getActivity(), true,false).itemDay();
+            }
+
+            View temp = new DayItem(getAllData(days[i]), days[i], getActivity(), true,textAnim).itemDay();
 
             lv.addView(temp);
 

@@ -50,16 +50,10 @@ public class DayItem {
 
         Animation animation;
 
-        if(backAnim){
-            animation = AnimationUtils.loadAnimation(activity,
-                    R.anim.zoom_in_back);
-
-        }else{
-
-            animation = AnimationUtils.loadAnimation(activity,
+        animation = AnimationUtils.loadAnimation(activity,
                     R.anim.zoom_in);
 
-        }
+
 
 
         Button bt = (Button) ll.findViewById(R.id.add_butt);
@@ -87,6 +81,9 @@ public class DayItem {
 
 
         tw.setText(day);
+        if(backAnim){
+            tw.setAnimation(animation);
+        }
 
         //Find view witch contain SubjectItems
         LinearLayout view = (LinearLayout) ll.findViewById(R.id.content);
