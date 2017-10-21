@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import maximprytyka.com.timetable.MethodHelper;
 import maximprytyka.com.timetable.R;
 import maximprytyka.com.timetable.SubjectItem;
 
@@ -62,6 +63,8 @@ public class DayItem {
        bt.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
+               MethodHelper mh = new MethodHelper();
+               mh.clearStaticVars();
                activity.getFragmentManager().beginTransaction().replace(R.id.content_frame, new AddSubFragment(dayName)).commit();
 
            }
@@ -85,7 +88,7 @@ public class DayItem {
         for (int i = 0; i < repeat; i++) {
 
 
-            view.addView(new SubjectItem(this.subjectArr.get(0 + i), this.subjectArr.get(0 + repeat + i), this.subjectArr.get(0 + 2 * repeat + i), this.subjectArr.get(0 + 3 * repeat + i), this.subjectArr.get(0 + 4 * repeat + i), this.subjectArr.get(0 + 5 * repeat + i), activity,this.edit).item());
+            view.addView(new SubjectItem(this.subjectArr.get(0 + i), this.subjectArr.get(0 + repeat + i), this.subjectArr.get(0 + 2 * repeat + i), this.subjectArr.get(0 + 3 * repeat + i), this.subjectArr.get(0 + 4 * repeat + i), this.subjectArr.get(0 + 5 * repeat + i), activity,this.edit,dayName).item());
 
 
         }

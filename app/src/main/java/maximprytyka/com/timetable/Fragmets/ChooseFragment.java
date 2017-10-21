@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -32,14 +33,14 @@ import static maximprytyka.com.timetable.DBHelper.KEY_VALUE;
 
 public class ChooseFragment extends Fragment{
 
-    private String column;
+    private String day;
     private String table;
     ListView lv;
     ArrayList<String> values = new ArrayList<>();
     ArrayAdapter<String> adapter;
 
-    public ChooseFragment(String table,String column) {
-        this.column = column;
+    public ChooseFragment(String table,String day) {
+        this.day = day;
         this.table = table;
     }
 
@@ -59,7 +60,7 @@ public class ChooseFragment extends Fragment{
         DBHelper dbHelper = new DBHelper(getActivity());
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
-        values = mh.getAllStringValues(db,table,column);
+        values = mh.readFromDB(values,db,table);
 
         adapter =  new ArrayAdapter<>(getActivity(), android.R.layout.simple_expandable_list_item_1, values);
 
@@ -69,7 +70,32 @@ public class ChooseFragment extends Fragment{
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                Toast.makeText(getActivity(),"test",Toast.LENGTH_LONG).show();
+                switch (table) {
+
+                    case "subjects":
+                        AddSubPreferenceFragment.subject = (String) ((TextView) view).getText();
+                        getFragmentManager().beginTransaction().replace(R.id.frame, new AddSubFragment(day)).commit();
+                        break;
+
+                    case "time":
+                            AddSubPreferenceFragment.time = (String) ((TextView) view).getText();
+                        getFragmentManager().beginTransaction().replace(R.id.frame, new AddSubFragment(day)).commit();
+                        break;
+                    case "buildings":
+                        AddSubPreferenceFragment.buildings = (String) ((TextView) view).getText();
+                        getFragmentManager().beginTransaction().replace(R.id.frame, new AddSubFragment(day)).commit();
+                        break;
+                    case "teachers":
+                        AddSubPreferenceFragment.teacher = (String) ((TextView) view).getText();
+                        getFragmentManager().beginTransaction().replace(R.id.frame, new AddSubFragment(day)).commit();
+                        break;
+                    case "lesson_type":
+                        AddSubPreferenceFragment.type = (String) ((TextView) view).getText();
+                        getFragmentManager().beginTransaction().replace(R.id.frame, new AddSubFragment(day)).commit();
+                        break;
+                }
+
+
             }
         });
 

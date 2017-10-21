@@ -17,6 +17,7 @@
         android:id="@+id/main_sub"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:layout_weight="100"
         android:background="@drawable/layout_bg"
@@ -44,6 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Математика"
+                android:textAlignment="center"
                 android:textSize="18sp"
                 android:textStyle="normal|bold" />
 
@@ -59,6 +61,7 @@
                     android:layout_marginTop="2dp"
                     android:layout_weight="1"
                     android:text="10:00AM"
+                    android:textAlignment="center"
                     android:textSize="12sp"
                     android:textStyle="normal|bold|italic" />
 
@@ -70,6 +73,7 @@
                     android:layout_marginTop="2dp"
                     android:layout_weight="1"
                     android:text="Лекция"
+                    android:textAlignment="center"
                     android:textSize="12sp" />
 
             </LinearLayout>
@@ -86,17 +90,19 @@
                     android:layout_marginTop="2dp"
                     android:layout_weight="1"
                     android:text="10:00PM"
+                    android:textAlignment="center"
                     android:textSize="12sp"
                     android:textStyle="normal|bold|italic" />
 
                 <TextView
-                    android:id="@+id/build"
+                    android:id="@+id/room"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="2dp"
                     android:layout_weight="1"
                     android:text="Аудитория: 23А"
+                    android:textAlignment="center"
                     android:textSize="12sp" />
 
             </LinearLayout>
@@ -115,23 +121,44 @@
                 android:id="@+id/teacher"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingRight="20dp"
                 android:text="Гуменюк А.Б"
+                android:textAlignment="center"
                 android:textSize="13sp" />
 
             <TextView
-                android:id="@+id/textView12"
+                android:id="@+id/corpus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingRight="20dp"
                 android:text="Корпус 23А, Шевченка"
+                android:textAlignment="center"
                 android:textSize="13sp" />
         </LinearLayout>
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/remove_button"
+    <LinearLayout
+        android:id="@+id/but_loy"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_weight="0"
-        android:text="Remove" />
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/remove_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="100"
+            android:text="Remove" />
+
+        <Button
+            android:id="@+id/edit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="100"
+            android:text="edit" />
+    </LinearLayout>
+
 </LinearLayout>

@@ -24,6 +24,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import maximprytyka.com.timetable.Fragmets.AddSubPreferenceFragment;
+
 public class MethodHelper {
 
     public static int swap=0;
@@ -289,23 +291,16 @@ public class MethodHelper {
     }
 
 
-    public ArrayList<String> getAllStringValues(SQLiteDatabase db,String table,String column) {
-        ArrayList<String> yourStringValues = new ArrayList<String>();
-        Cursor result = db.query(true, table,
-                new String[] { column }, null, null, null, null,
-                null, null);
+    public void clearStaticVars(){
+        AddSubPreferenceFragment.subject = null;
+        AddSubPreferenceFragment.time = null;
+        AddSubPreferenceFragment.buildings = null;
+        AddSubPreferenceFragment.teacher = null;
+        AddSubPreferenceFragment.type = null;
 
-        if (result.moveToFirst()) {
-            do {
-                yourStringValues.add(result.getString(result
-                        .getColumnIndex(column)));
-            } while (result.moveToNext());
-        } else {
-            return null;
-        }
-        return yourStringValues;
+
+
     }
-
 
 
 }

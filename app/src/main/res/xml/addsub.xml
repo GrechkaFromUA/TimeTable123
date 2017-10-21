@@ -2,10 +2,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:key="temp">
     <Preference
-        android:key="subject"
+        android:key="subjects"
         android:summary="Выберите предмет"
         android:title="Предмет"
-        app:key="subject"></Preference>
+        app:key="subjects"></Preference>
     <PreferenceCategory android:title="Время">
         <Preference
             android:key="time"
@@ -15,7 +15,7 @@
     </PreferenceCategory>
     <PreferenceCategory android:title="Дополнительные данные">
         <Preference
-            android:key="building"
+            android:key="buildings"
             android:summary="Корпус 1"
             android:title="Здание"
             app:key="buildings"></Preference>
@@ -24,9 +24,11 @@
             android:key="room"
             android:summary="21"
             android:title="Аудитория/Класс"
-            app:key="clas" />
+            android:inputType=
+                "textCapSentences|textAutoCorrect"
+            />
         <Preference
-            android:key="teacher"
+            android:key="teachers"
             android:summary="И.К Непрограммер"
             android:title="Учитель"
             app:key="teacher"></Preference>
