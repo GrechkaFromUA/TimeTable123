@@ -54,7 +54,7 @@
     <string name="settings_category2">Дополнительные параметры</string>
 
     //Default Summary Fro Settings
-    
+    <string name="subject_pref">Виберете предмет</string>
 
 
 </resources>
