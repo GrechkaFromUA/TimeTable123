@@ -55,7 +55,7 @@ public class MainScreenFragment extends Fragment {
 
 
         if (MethodHelper.swap == 0) {
-            startMain(v, fab);
+            startMain(v, fab,false);
         } else {
             startMainEditable(v, fab);
         }
@@ -71,7 +71,7 @@ public class MainScreenFragment extends Fragment {
                         startMainEditable(v, fab);
                         break;
                     case 1:
-                        startMain(v, fab);
+                        startMain(v, fab,true);
                         break;
                 }
 
@@ -135,7 +135,7 @@ public class MainScreenFragment extends Fragment {
     }
 
 
-    public void startMain(View v, FloatingActionButton fab) {
+    public void startMain(View v, FloatingActionButton fab,boolean animated) {
 
         MethodHelper.swap = 0;
 
@@ -154,7 +154,7 @@ public class MainScreenFragment extends Fragment {
 
             } else {
 
-                View temp = new DayItem(getAllData(days[i]), days[i], getActivity(), false).itemDay();
+                View temp = new DayItem(getAllData(days[i]), days[i], getActivity(), false,animated).itemDay();
 
                 lv.addView(temp);
 
@@ -191,7 +191,7 @@ public class MainScreenFragment extends Fragment {
         for (int i = 0; i < 7; i++) {
 
 
-            View temp = new DayItem(getAllData(days[i]), days[i], getActivity(), true).itemDay();
+            View temp = new DayItem(getAllData(days[i]), days[i], getActivity(), true,false).itemDay();
 
             lv.addView(temp);
 

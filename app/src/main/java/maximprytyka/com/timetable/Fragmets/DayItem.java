@@ -23,15 +23,17 @@ public class DayItem {
 
     private ArrayList<String> subjectArr;
     private boolean edit;
+    private boolean backAnim;
     private String dayName;
     private Activity activity;
 
-    public DayItem(ArrayList<String> subjectarr, String dayName, Activity activity, boolean edit) {
+    public DayItem(ArrayList<String> subjectarr, String dayName, Activity activity, boolean edit,boolean backAnim) {
 
         this.subjectArr = subjectarr;
         this.activity = activity;
         this.dayName = dayName;
         this.edit = edit;
+        this.backAnim = backAnim;
 
     }
 
@@ -47,8 +49,18 @@ public class DayItem {
                 LinearLayout.LayoutParams.WRAP_CONTENT);
 
         Animation animation;
-        animation = AnimationUtils.loadAnimation(activity,
-                R.anim.zoom_in);
+
+        if(backAnim){
+            animation = AnimationUtils.loadAnimation(activity,
+                    R.anim.zoom_in_back);
+
+        }else{
+
+            animation = AnimationUtils.loadAnimation(activity,
+                    R.anim.zoom_in);
+
+        }
+
 
         Button bt = (Button) ll.findViewById(R.id.add_butt);
         if (this.edit) {
@@ -58,6 +70,7 @@ public class DayItem {
             params.height = 0;
         }
         bt.setLayoutParams(params);
+
         bt.startAnimation(animation);
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
