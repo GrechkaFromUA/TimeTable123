@@ -294,7 +294,7 @@ public class MethodHelper {
     public void clearStaticVars(){
         AddSubPreferenceFragment.subject = null;
         AddSubPreferenceFragment.time = null;
-        AddSubPreferenceFragment.buildings = null;
+        AddSubPreferenceFragment.building = null;
         AddSubPreferenceFragment.teacher = null;
         AddSubPreferenceFragment.type = null;
 

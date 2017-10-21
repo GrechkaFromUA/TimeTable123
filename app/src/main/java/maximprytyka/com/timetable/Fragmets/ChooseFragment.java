@@ -82,7 +82,7 @@ public class ChooseFragment extends Fragment{
                         getFragmentManager().beginTransaction().replace(R.id.frame, new AddSubFragment(day)).commit();
                         break;
                     case "buildings":
-                        AddSubPreferenceFragment.buildings = (String) ((TextView) view).getText();
+                        AddSubPreferenceFragment.building= (String) ((TextView) view).getText();
                         getFragmentManager().beginTransaction().replace(R.id.frame, new AddSubFragment(day)).commit();
                         break;
                     case "teachers":
