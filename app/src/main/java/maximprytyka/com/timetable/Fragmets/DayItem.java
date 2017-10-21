@@ -22,6 +22,9 @@ import maximprytyka.com.timetable.SubjectItem;
 
 
 public class DayItem {
+    Button bt;
+
+
     private int animetedBack;
     private ArrayList<String> subjectArr;
     private boolean edit;
@@ -41,12 +44,12 @@ public class DayItem {
     public View itemDay() {
 
         //Inflate from other xml
-        LayoutInflater li = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        final LayoutInflater li = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         LinearLayout ll = (LinearLayout) li.inflate(R.layout.item_day, null, false);
 
         //Find and change text on TextView
-        final Button bt = (Button) ll.findViewById(R.id.add_butt);
+        bt = (Button) ll.findViewById(R.id.add_butt);
 
         LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) bt.getLayoutParams();
 
@@ -64,19 +67,19 @@ public class DayItem {
 
             if(animetedBack == 0){
 
-
+                bt.getLayoutParams().height=0;
             }
 
 
         if(animetedBack == 1){
 
-            bt.getLayoutParams().height = LinearLayout.LayoutParams.WRAP_CONTENT;
+
+
             Animation back;
             back = AnimationUtils.loadAnimation(activity,
                     R.anim.zoom_in_back);
 
             bt.startAnimation(back);
-
 
 
             bt.getAnimation().setAnimationListener(new Animation.AnimationListener() {
@@ -87,8 +90,10 @@ public class DayItem {
 
                 @Override
                 public void onAnimationEnd(Animation animation) {
+                    Toast.makeText(activity,"tetst",Toast.LENGTH_SHORT).show();
+                    buttontozero();
 
-                    bt.getLayoutParams().height = 0;
+
                 }
 
                 @Override
@@ -101,7 +106,7 @@ public class DayItem {
 
 
         if(animetedBack == 2){
-            bt.getLayoutParams().height = LinearLayout.LayoutParams.WRAP_CONTENT;
+
             bt.setAnimation(animation);
 
         }
@@ -154,7 +159,9 @@ public class DayItem {
 
 
 
-
+public void buttontozero(){
+    bt.getLayoutParams().height=0;
+}
 
 
 }
