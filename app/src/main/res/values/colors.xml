@@ -5,9 +5,16 @@
     <color name="colorAccent">#5b9d01</color>
     <color name="colorTitle">#ffffff</color>
 
-    <color name="colorBackgroung">#ededed</color>
+    <color name="colorBackground">#ededed</color>
 
 
     <color name="colorText1">#4a4a4a</color>
     <color name="colorText2">#939393</color>
+
+
+    <color name="intro1">#3c54ba</color>
+    <color name="intro2">#0098f7</color>
+    <color name="intro3">#f93666</color>
+    <color name="intro4">#6a43b5</color>
+
 </resources>

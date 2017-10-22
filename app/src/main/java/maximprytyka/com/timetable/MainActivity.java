@@ -1,8 +1,12 @@
 package maximprytyka.com.timetable;
 
 import android.app.FragmentManager;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatDelegate;
+import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.SwitchCompat;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -39,7 +43,6 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
-
 
         //admob ad start
         MobileAds.initialize(this, "ca-app-pub-3940256099942544/6300978111");
@@ -149,5 +152,6 @@ public class MainActivity extends AppCompatActivity
 
         return true;
     }
+
 
 }
