@@ -15,6 +15,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import maximprytyka.com.timetable.Animations.ZoomOut;
+import maximprytyka.com.timetable.Animations.ZoomOutBack;
 import maximprytyka.com.timetable.MethodHelper;
 import maximprytyka.com.timetable.R;
 import maximprytyka.com.timetable.SubjectItem;
@@ -75,39 +77,24 @@ public class DayItem {
 
 
 
-            Animation back;
-            back = AnimationUtils.loadAnimation(activity,
-                    R.anim.zoom_in_back);
-
-            bt.startAnimation(back);
 
 
-            bt.getAnimation().setAnimationListener(new Animation.AnimationListener() {
-                @Override
-                public void onAnimationStart(Animation animation) {
 
-                }
+            ZoomOut anim = new ZoomOut(bt, 500, 100, 500,0);
 
-                @Override
-                public void onAnimationEnd(Animation animation) {
-                    Toast.makeText(activity,"tetst",Toast.LENGTH_SHORT).show();
-                    buttontozero();
+            bt.setAnimation(anim);
 
 
-                }
 
-                @Override
-                public void onAnimationRepeat(Animation animation) {
 
-                }
-            });
 
         }
 
 
         if(animetedBack == 2){
-
-            bt.setAnimation(animation);
+            bt.getLayoutParams().height=0;
+            ZoomOutBack zob = new ZoomOutBack(bt,500,0,500,100);
+            bt.setAnimation(zob);
 
         }
 
