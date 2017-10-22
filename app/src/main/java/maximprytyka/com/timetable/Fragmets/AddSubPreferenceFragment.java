@@ -8,6 +8,9 @@ import android.preference.Preference;
 import android.preference.PreferenceFragment;
 
 import android.preference.EditTextPreference;
+import android.support.design.widget.FloatingActionButton;
+import android.view.View;
+import android.view.ViewGroup;
 
 import maximprytyka.com.timetable.R;
 
@@ -22,20 +25,23 @@ public class AddSubPreferenceFragment extends PreferenceFragment {
     public static String type;
 
 
+
     public static final String[] tables = {"subjects", "time", "buildings", "room", "teachers", "lesson_type"};
 
 
     private String day;
     private boolean edit;
-
-    public AddSubPreferenceFragment(String day) {
+    private FloatingActionButton fab;
+    public AddSubPreferenceFragment(String day, FloatingActionButton fab) {
         this.day = day;
         this.edit = false;
+        this.fab = fab;
     }
 
-    public AddSubPreferenceFragment(String day, boolean edit) {
+    public AddSubPreferenceFragment(String day,FloatingActionButton fab, boolean edit) {
         this.day = day;
         this.edit = edit;
+        this.fab = fab;
     }
 
     @TargetApi(Build.VERSION_CODES.M)
@@ -46,7 +52,7 @@ public class AddSubPreferenceFragment extends PreferenceFragment {
 
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.addsub); //файл в папці res/xml
-
+        fab.bringToFront();
 
         for (int i = 0; i < tables.length; i++) {
 
@@ -123,6 +129,8 @@ public class AddSubPreferenceFragment extends PreferenceFragment {
         }
 
 
+
+
     }
 
 
@@ -141,5 +149,8 @@ public class AddSubPreferenceFragment extends PreferenceFragment {
         });
 
     }
+
+
+
 
 }

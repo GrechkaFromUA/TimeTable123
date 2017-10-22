@@ -2,6 +2,7 @@ package maximprytyka.com.timetable;
 
 import android.app.FragmentManager;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.SwitchCompat;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -36,6 +37,8 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
 
 
         //admob ad start

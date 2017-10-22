@@ -53,18 +53,18 @@ public class AddSubFragment extends Fragment {
         super.onCreate(savedInstanceState);
         View v = inflater.inflate(R.layout.fragment_content_add, container, false);
         FragmentManager fm = getFragmentManager(); //Фрагмент менеджер
-
-        if (edit == false) {
-            fm.beginTransaction().replace(R.id.frame, new AddSubPreferenceFragment(day)).commit();
-        } else {
-            fm.beginTransaction().replace(R.id.frame, new AddSubPreferenceFragment(day, true)).commit();
-        }
         FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.fab);
+        if (edit == false) {
+            fm.beginTransaction().replace(R.id.frame, new AddSubPreferenceFragment(day,fab)).commit();
+        } else {
+            fm.beginTransaction().replace(R.id.frame, new AddSubPreferenceFragment(day,fab,true)).commit();
+        }
+
         fab.bringToFront();
         fab.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.ic_accept));
         fab.setClickable(true);
 
-
+        fab.bringToFront();
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

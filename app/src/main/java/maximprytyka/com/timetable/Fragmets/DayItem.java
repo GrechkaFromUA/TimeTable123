@@ -63,7 +63,7 @@ public class DayItem {
 
         if (animetedBack == 0) {
 
-            bt.getLayoutParams().height = 0;
+            bt.setVisibility(View.VISIBLE);
         }
 
 
