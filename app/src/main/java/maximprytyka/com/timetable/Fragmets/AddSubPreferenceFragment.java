@@ -137,18 +137,46 @@ public class AddSubPreferenceFragment extends PreferenceFragment {
 
 
 
-        
 
 
-        getView().setFocusableInTouchMode(true);
-        getView().requestFocus();
-        getView().setOnKeyListener(new View.OnKeyListener() {
+
+
+
+
+
+
+    }
+
+
+    public void prefClick(Preference preference, final String table) {
+
+        preference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+
+                //Дія при нажатті
+                getFragmentManager().beginTransaction().replace(R.id.frame, new ChooseFragment(table, day)).commit();
+
+
+                return false;
+            }
+        });
+
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        view.setFocusableInTouchMode(true);
+        view.requestFocus();
+        view.setOnKeyListener(new View.OnKeyListener() {
             @Override
             public boolean onKey(View v, int keyCode, KeyEvent event) {
 
                 if (keyCode == KeyEvent.KEYCODE_BACK) {
 
-                    if(edit == false){
+                    if(edit == true){
                         DBHelper dbHelper = new DBHelper(getActivity());
                         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
@@ -182,29 +210,7 @@ public class AddSubPreferenceFragment extends PreferenceFragment {
             }
         });
 
-
-
-
     }
-
-
-    public void prefClick(Preference preference, final String table) {
-
-        preference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
-
-                //Дія при нажатті
-                getFragmentManager().beginTransaction().replace(R.id.frame, new ChooseFragment(table, day)).commit();
-
-
-                return false;
-            }
-        });
-
-    }
-
-
 
 
 
