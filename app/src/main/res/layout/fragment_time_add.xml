@@ -22,15 +22,15 @@
             android:layout_marginTop="20dp">
 
             <TextView
-                android:text="@string/start_lesson"
+                android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView3"
-                android:textColor="@android:color/white"
+                android:layout_weight="1"
                 android:elevation="0dp"
                 android:gravity="center"
+                android:text="@string/start_lesson"
+                android:textColor="@color/colorText1"
                 android:textSize="25sp"
-                android:layout_weight="1"
                 android:textStyle="normal|bold" />
         </LinearLayout>
 
@@ -47,15 +47,15 @@
             android:gravity="center">
 
             <TextView
-                android:text="@string/end_lesson"
+                android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView4"
-                android:textColor="@android:color/white"
+                android:layout_weight="1"
                 android:elevation="0dp"
                 android:gravity="center"
+                android:text="@string/end_lesson"
+                android:textColor="@color/colorText1"
                 android:textSize="25sp"
-                android:layout_weight="1"
                 android:textStyle="normal|bold" />
         </LinearLayout>
         <TimePicker
