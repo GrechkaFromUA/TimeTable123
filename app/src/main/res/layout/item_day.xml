@@ -33,14 +33,14 @@
         android:orientation="vertical"></LinearLayout>
 
     <ImageButton
-        android:layout_height="50dp"
-        app:srcCompat="@drawable/add"
         android:id="@+id/add_butt"
-        android:layout_weight="1"
-        android:background="@android:color/transparent"
         android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_weight="0"
+        android:background="@android:color/transparent"
         android:scaleType="fitCenter"
-        android:layout_gravity="center" />
+        app:srcCompat="@drawable/add" />
 
 
 </LinearLayout>

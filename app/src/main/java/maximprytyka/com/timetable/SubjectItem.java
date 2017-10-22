@@ -159,18 +159,18 @@ public class SubjectItem {
         });
 
 
-        CardView temp = (CardView) ll.findViewById(R.id.main_sub);
 
-        final LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) temp.getLayoutParams();
+
+
 
 
         if (edit == true) {
-            params.weight = 100f;
+            butLoy.getLayoutParams().width = LinearLayout.LayoutParams.MATCH_PARENT;
         } else {
-            params.weight = 0f;
+            butLoy.getLayoutParams().width =0;
         }
 
-        temp.setLayoutParams(params);
+
 
 
         return ll;

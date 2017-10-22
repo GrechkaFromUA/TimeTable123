@@ -62,7 +62,7 @@ public class DayItem {
 
 
         if (animetedBack == 0) {
-
+            bt.getLayoutParams().height = 0;
             bt.setVisibility(View.VISIBLE);
         }
 
@@ -70,7 +70,8 @@ public class DayItem {
         if (animetedBack == 1) {
 
 
-            ZoomOut anim = new ZoomOut(bt, 500, 100, 500, 0);
+
+            ZoomOut anim = new ZoomOut(bt, params.width, params.height, params.width, 0);
 
             bt.setAnimation(anim);
 
@@ -79,8 +80,9 @@ public class DayItem {
 
 
         if (animetedBack == 2) {
-            bt.getLayoutParams().height = 0;
-            ZoomOutBack zob = new ZoomOutBack(bt, 500, 0, 500, 100);
+            int temp = bt.getLayoutParams().height;
+            bt.getLayoutParams().height=0;
+            ZoomOutBack zob = new ZoomOutBack(bt, params.width, 0, params.width, temp);
             bt.setAnimation(zob);
 
         }
