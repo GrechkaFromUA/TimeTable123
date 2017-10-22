@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -78,6 +79,38 @@ public class MainScreenFragment extends Fragment {
 
             }
         });
+
+
+        v.setFocusableInTouchMode(true);
+        v.requestFocus();
+        v.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+
+                if (keyCode == KeyEvent.KEYCODE_BACK) {
+
+
+                   switch (MethodHelper.swap){
+                       case 1:
+                           startMain(v, fab,1);
+                           break;
+                       default:
+
+                           break;
+                   }
+
+
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+
+        });
+
+
+
 
 
         return v;
@@ -203,6 +236,9 @@ public class MainScreenFragment extends Fragment {
         }
 
     }
+
+
+
 
 
 }

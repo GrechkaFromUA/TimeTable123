@@ -111,6 +111,7 @@ public class MainActivity extends AppCompatActivity
 
 
         if (id == R.id.nav_main) {
+            MethodHelper.swap =0;
             fm.beginTransaction().replace(R.id.content_frame, new MainScreenFragment()).commit();
             setTitle(getString(R.string.timetable));
             drawer.closeDrawer(GravityCompat.START);
