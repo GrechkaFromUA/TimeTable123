@@ -69,7 +69,7 @@ public class AddSubFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                if (edit == false) {
+
 
 
                     DBHelper dbHelper = new DBHelper(getActivity());
@@ -91,10 +91,7 @@ public class AddSubFragment extends Fragment {
                     getFragmentManager().beginTransaction().replace(R.id.content_frame, new MainScreenFragment()).commit();
 
 
-                } else {
 
-
-                }
 
             }
 

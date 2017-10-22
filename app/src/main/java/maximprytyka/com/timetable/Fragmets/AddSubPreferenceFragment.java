@@ -2,16 +2,21 @@ package maximprytyka.com.timetable.Fragmets;
 
 import android.annotation.TargetApi;
 import android.app.FragmentManager;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 
 import android.preference.EditTextPreference;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
+import maximprytyka.com.timetable.DBHelper;
+import maximprytyka.com.timetable.MethodHelper;
 import maximprytyka.com.timetable.R;
 
 
@@ -77,6 +82,7 @@ public class AddSubPreferenceFragment extends PreferenceFragment {
     }
 
 
+
     void pref(final String table) {
 
         Preference pref = findPreference(table); //найти пункт по параметру "key"
@@ -131,6 +137,54 @@ public class AddSubPreferenceFragment extends PreferenceFragment {
 
 
 
+        
+
+
+        getView().setFocusableInTouchMode(true);
+        getView().requestFocus();
+        getView().setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+
+                if (keyCode == KeyEvent.KEYCODE_BACK) {
+
+                    if(edit == false){
+                        DBHelper dbHelper = new DBHelper(getActivity());
+                        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+
+                        db.execSQL("INSERT INTO " + day + "(subject,teacher,room,building,time,type) VALUES ( '"
+                                + AddSubPreferenceFragment.subject + "','"
+                                + AddSubPreferenceFragment.teacher + "','"
+                                + AddSubPreferenceFragment.room + "','"
+                                + AddSubPreferenceFragment.building + "','"
+                                + AddSubPreferenceFragment.time + "','" +
+                                AddSubPreferenceFragment.type + "')");
+
+                        db.close();
+
+                        MethodHelper.swap = 1;
+
+                        getFragmentManager().beginTransaction().replace(R.id.content_frame, new MainScreenFragment()).commit();
+                    }
+                    else{
+
+                        MethodHelper.swap = 1;
+
+                        getFragmentManager().beginTransaction().replace(R.id.content_frame, new MainScreenFragment()).commit();
+                    }
+
+
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        });
+
+
+
+
     }
 
 
@@ -149,6 +203,7 @@ public class AddSubPreferenceFragment extends PreferenceFragment {
         });
 
     }
+
 
 
 

@@ -151,8 +151,16 @@ public class SubjectItem {
             @Override
             public void onClick(View view) {
 
+
+
+                DBHelper dbHelper = new DBHelper(ac);
+                SQLiteDatabase db = dbHelper.getWritableDatabase();
+                db.execSQL(query);
+                db.close();
+
                 writeStaticVars();
-                ac.getFragmentManager().beginTransaction().replace(R.id.frame, new AddSubFragment(dayName, true)).commit();
+
+                ac.getFragmentManager().beginTransaction().replace(R.id.content_frame, new AddSubFragment(dayName, true)).commit();
 
 
             }
