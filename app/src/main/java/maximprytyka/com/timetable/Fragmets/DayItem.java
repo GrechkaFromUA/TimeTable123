@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,9 +23,8 @@ import maximprytyka.com.timetable.R;
 import maximprytyka.com.timetable.SubjectItem;
 
 
-
 public class DayItem {
-    Button bt;
+    ImageButton bt;
 
 
     private int animetedBack;
@@ -51,54 +51,39 @@ public class DayItem {
         LinearLayout ll = (LinearLayout) li.inflate(R.layout.item_day, null, false);
 
         //Find and change text on TextView
-        bt = (Button) ll.findViewById(R.id.add_butt);
+        bt = (ImageButton) ll.findViewById(R.id.add_butt);
 
         LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) bt.getLayoutParams();
 
         Animation animation;
 
         animation = AnimationUtils.loadAnimation(activity,
-                    R.anim.zoom_in);
+                R.anim.zoom_in);
 
 
+        if (animetedBack == 0) {
+
+            bt.getLayoutParams().height = 0;
+        }
 
 
+        if (animetedBack == 1) {
 
 
-
-
-            if(animetedBack == 0){
-
-                bt.getLayoutParams().height=0;
-            }
-
-
-        if(animetedBack == 1){
-
-
-
-
-
-
-            ZoomOut anim = new ZoomOut(bt, 500, 100, 500,0);
+            ZoomOut anim = new ZoomOut(bt, 500, 100, 500, 0);
 
             bt.setAnimation(anim);
 
 
-
-
-
         }
 
 
-        if(animetedBack == 2){
-            bt.getLayoutParams().height=0;
-            ZoomOutBack zob = new ZoomOutBack(bt,500,0,500,100);
+        if (animetedBack == 2) {
+            bt.getLayoutParams().height = 0;
+            ZoomOutBack zob = new ZoomOutBack(bt, 500, 0, 500, 100);
             bt.setAnimation(zob);
 
         }
-
-
 
 
         bt.setOnClickListener(new View.OnClickListener() {
@@ -112,15 +97,12 @@ public class DayItem {
         });
 
 
-
-
-
         TextView tw = (TextView) ll.findViewById(R.id.dayName);
         String day = dayName.substring(0, 1).toUpperCase() + dayName.substring(1).toLowerCase();
         tw.setText(day);
 
 
-        if(backAnim){
+        if (backAnim) {
             tw.setAnimation(animation);
         }
 
@@ -145,10 +127,9 @@ public class DayItem {
     }
 
 
-
-public void buttontozero(){
-    bt.getLayoutParams().height=0;
-}
+    public void buttontozero() {
+        bt.getLayoutParams().height = 0;
+    }
 
 
 }

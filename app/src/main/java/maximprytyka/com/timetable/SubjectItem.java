@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -118,7 +119,7 @@ public class SubjectItem {
         }
         butLoy.setLayoutParams(parametrs);
         butLoy.startAnimation(animation);
-        Button del_but = (Button) ll.findViewById(R.id.remove_button);
+        ImageButton del_but = (ImageButton) ll.findViewById(R.id.remove_button);
 
         final String query = "DELETE FROM " + dayName + " WHERE " +
                 "subject LIKE '%" + this.subject + "%' AND " +
@@ -143,7 +144,7 @@ public class SubjectItem {
             }
         });
 
-        Button edit_but = (Button) ll.findViewById(R.id.edit);
+        ImageButton edit_but = (ImageButton) ll.findViewById(R.id.edit);
 
         edit_but.setOnClickListener(new View.OnClickListener() {
             @Override

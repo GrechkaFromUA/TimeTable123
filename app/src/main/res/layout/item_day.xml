@@ -13,19 +13,16 @@
 
     <TextView
         android:id="@+id/dayName"
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="50dp"
-        android:fontFamily="Roboto"
+        android:fontFamily="sans-serif-light"
         android:paddingBottom="5dp"
         android:text="Monday"
-        android:textAlignment="textStart"
-        android:textColor="#7bdeee"
-        android:textSize="22sp"
-        android:typeface="normal" />
+        android:textColor="#919191"
+        android:textSize="22sp" />
 
     <LinearLayout
         android:id="@+id/content"
@@ -35,13 +32,15 @@
         android:layout_marginLeft="10dp"
         android:orientation="vertical"></LinearLayout>
 
-    <Button
+    <ImageButton
+        android:layout_height="50dp"
+        app:srcCompat="@drawable/add"
         android:id="@+id/add_butt"
-        android:layout_width="500px"
-        android:layout_height="100px"
-        android:layout_gravity="center"
-        android:background="@drawable/add_subj_button"
-        android:textSize="10sp" />
+        android:layout_weight="1"
+        android:background="@android:color/transparent"
+        android:layout_width="50dp"
+        android:scaleType="fitCenter"
+        android:layout_gravity="center" />
 
 
 </LinearLayout>
