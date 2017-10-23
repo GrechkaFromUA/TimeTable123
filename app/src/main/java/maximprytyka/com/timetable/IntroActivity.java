@@ -2,13 +2,8 @@ package maximprytyka.com.timetable;
 
 
 import android.content.Intent;
-import android.graphics.Typeface;
-import android.os.Build;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.Toast;
 
 import com.luseen.verticalintrolibrary.VerticalIntro;
 import com.luseen.verticalintrolibrary.VerticalIntroItem;
@@ -21,53 +16,43 @@ public class IntroActivity extends VerticalIntro {
 
         addIntroItem(new VerticalIntroItem.Builder()
                 .backgroundColor(R.color.intro1)
-                .image(R.drawable.edit)
-                .title("Lorem Ipsum Lorem Ipsum")
-                .text("Lorem Ipsum is simply dummy text of the printing and typesetting industry." +
-                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry." +
-                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry.")
-                .textSize(14)
-                .titleSize(17)
+                .image(R.drawable.intro_1)
+                .title(getString(R.string.intro1_screen1))
+                .text(getString(R.string.intro1_screen2) + "\n\n\n")
+                .textSize(15)
+                .titleSize(24)
                 .build());
 
         addIntroItem(new VerticalIntroItem.Builder()
                 .backgroundColor(R.color.intro2)
-                .image(R.drawable.edit)
-                .title("Lorem Ipsum Lorem Ipsum ")
-                .text("Lorem Ipsum is simply dummy text of the printing and typesetting industry." +
-                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry.")
+                .image(R.drawable.intro_3)
+                .title(getString(R.string.intro3_screen1))
+                .text(getString(R.string.intro3_screen2) + "\n\n\n")
+                .textSize(15)
+                .titleSize(24)
                 .build());
 
         addIntroItem(new VerticalIntroItem.Builder()
                 .backgroundColor(R.color.intro3)
-                .image(R.drawable.edit)
-                .title("Lorem Ipsum")
-                .text("Lorem Ipsum is simply dummy text of the printing and typesetting industry.")
-                .textColor(R.color.white)
-                .titleColor(R.color.white)
-                .build());
-
-        addIntroItem(new VerticalIntroItem.Builder()
-                .backgroundColor(R.color.intro4)
-                .image(R.drawable.fon)
-                .title("Lorem Ipsum")
-                .text("Lorem Ipsum is simply dummy text of the printing and typesetting industry." +
-                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry." +
-                        "Lorem Ipsum is simply dummy text of the printing and typesetting industry.")
+                .image(R.drawable.intro_2)
+                .title(getString(R.string.intro2_screen1))
+                .text(getString(R.string.intro2_screen2 ) + "\n\n\n")
+                .textSize(15)
+                .titleSize(24)
                 .build());
 
         setSkipEnabled(true);
         setVibrateEnabled(true);
-        setSkipColor(R.color.cardview_dark_background);
-//        setNextText("OK");
-//        setDoneText("FINISH HIM");
-//        setSkipText("GO GO");
+        setSkipColor(R.color.white);
+        setNextText(getString(R.string.next));
+        setDoneText(getString(R.string.done));
+        setSkipText(getString(R.string.skip));
         setVibrateIntensity(20);
     }
 
     @Override
     protected Integer setLastItemBottomViewColor() {
-        return R.color.intro1;
+        return R.color.intro4;
     }
 
     @Override

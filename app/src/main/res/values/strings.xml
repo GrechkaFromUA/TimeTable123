@@ -57,4 +57,19 @@
     <string name="subject_pref">Виберете предмет</string>
 
 
+    //Intro
+    <string name="intro1_screen1">Успевай везде!</string>
+    <string name="intro1_screen2">Делай расписание, добавляй список предметов, учителей, время всех своих планов или занятий и успевай всё ;)</string>
+
+    <string name="intro2_screen1">Просто и понятно!</string>
+    <string name="intro2_screen2">Простой и понятный интерфейс, в котором разберется даже ребенок.</string>
+
+    <string name="intro3_screen1">Постоянная поддержка!</string>
+    <string name="intro3_screen2">Стабильный выход обновлений и улучшений. Мы всегда прислушаемся к пользователям.</string>
+
+    <string name="next">ДАЛЕЕ</string>
+    <string name="done">ПОЕХАЛИ!</string>
+    <string name="skip">SKIP</string>
+
+
 </resources>
