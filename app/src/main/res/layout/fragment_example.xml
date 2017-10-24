@@ -20,7 +20,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="top|center"
-            android:orientation="vertical"></LinearLayout>
+            android:orientation="vertical"
+            android:paddingTop="6dp"></LinearLayout>
     </ScrollView>
 
 </FrameLayout>

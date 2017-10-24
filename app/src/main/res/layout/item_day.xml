@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingBottom="0dp"
-    android:paddingTop="10dp"
+    android:paddingTop="5dp"
     android:weightSum="0">
 
 
@@ -20,7 +19,6 @@
         android:layout_marginLeft="40dp"
         android:fontFamily="sans-serif-light"
         android:paddingBottom="6dp"
-        android:paddingTop="6dp"
         android:text="Monday"
         android:textColor="#919191"
         android:textSize="22sp" />
