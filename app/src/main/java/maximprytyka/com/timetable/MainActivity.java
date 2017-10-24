@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
+import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.SwitchCompat;
@@ -16,6 +18,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -34,6 +37,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private AdView adView;
+    private SwitchCompat switcher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +66,21 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         getFragmentManager().beginTransaction().replace(R.id.content_frame, new MainScreenFragment()).commit(); //Заміна фрагмента по нажаттю кнопки
+
+
+        Menu menu = navigationView.getMenu();
+        MenuItem menuItem = menu.findItem(R.id.nav_two_weeks);
+        View actionView = MenuItemCompat.getActionView(menuItem);
+
+        switcher = (SwitchCompat) actionView.findViewById(R.id.drawer_switch);
+        switcher.setChecked(true);
+        switcher.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Snackbar.make(v, (switcher.isChecked()) ? "is checked!!!" : "not checked!!!", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+            }
+        });
+
     }
 
     @Override
@@ -144,11 +163,11 @@ public class MainActivity extends AppCompatActivity
             setTitle(getString(R.string.title_lessons_type));
             drawer.closeDrawer(GravityCompat.START);
         } else if (id == R.id.nav_two_weeks) {
-            switchCompat.toggle();
+            switcher.setChecked(!switcher.isChecked());
+            Snackbar.make(item.getActionView(), (switcher.isChecked()) ? "is checked" : "not checked", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
         } else if (id == R.id.nav_first_day) {
 
         }
-
 
         return true;
     }
