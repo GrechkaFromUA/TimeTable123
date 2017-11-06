@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +19,7 @@ import android.widget.LinearLayout;
 import java.util.ArrayList;
 
 import maximprytyka.com.timetable.DBHelper;
+import maximprytyka.com.timetable.Items.DayItem;
 import maximprytyka.com.timetable.MethodHelper;
 import maximprytyka.com.timetable.R;
 
@@ -81,34 +81,6 @@ public class MainScreenFragment extends Fragment {
         });
 
 
-        v.setFocusableInTouchMode(true);
-        v.requestFocus();
-        v.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-
-                if (keyCode == KeyEvent.KEYCODE_BACK) {
-
-
-                   switch (MethodHelper.swap){
-                       case 1:
-                           startMain(v, fab,1);
-                           break;
-                       default:
-
-                           break;
-                   }
-
-
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-
-
-        });
-
 
 
 
@@ -120,7 +92,7 @@ public class MainScreenFragment extends Fragment {
 
 
 
-    public ArrayList<String> getAllData(String day) {
+    public  ArrayList<String> getAllData(String day) {
         String columns[] = new String[]{"time", "subject", "room", "teacher", "type", "building"};
         ArrayList<String> data = new ArrayList<>();
 
@@ -139,7 +111,9 @@ public class MainScreenFragment extends Fragment {
         return data;
     }
 
-    public String[] getData(String day, String column) {
+    public  String[] getData(String day, String column) {
+
+
         Cursor cursor = dbHelper.getReadableDatabase().rawQuery("SELECT * FROM " + day, null);
         cursor.moveToFirst();
         ArrayList<String> names = new ArrayList<>();
@@ -179,17 +153,19 @@ public class MainScreenFragment extends Fragment {
 
 
         for (int i = 0; i < 7; i++) {
+            boolean textAnim=false;
             if (getRowCount(days[i]) == 0) {
 
+                textAnim = true;
 
-            } else {
+            }
 
-                View temp = new DayItem(animated, getAllData(days[i]), days[i], getActivity() ,false ,false).itemDay();
+                View temp = new DayItem(animated, getAllData(days[i]), days[i], getActivity() ,false ,textAnim).itemDay();
 
                 lv.addView(temp);
 
 
-            }
+
 
 
         }

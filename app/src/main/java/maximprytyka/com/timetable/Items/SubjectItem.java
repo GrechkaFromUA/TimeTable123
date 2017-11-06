@@ -1,4 +1,4 @@
-package maximprytyka.com.timetable;
+package maximprytyka.com.timetable.Items;
 
 import android.app.Activity;
 import android.app.FragmentManager;
@@ -21,10 +21,13 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import maximprytyka.com.timetable.DBHelper;
 import maximprytyka.com.timetable.Fragmets.AddSubFragment;
 import maximprytyka.com.timetable.Fragmets.AddSubPreferenceFragment;
 import maximprytyka.com.timetable.Fragmets.MainScreenFragment;
 import maximprytyka.com.timetable.Fragmets.TypeFragment;
+import maximprytyka.com.timetable.MethodHelper;
+import maximprytyka.com.timetable.R;
 
 import static maximprytyka.com.timetable.R.id.dayName;
 import static maximprytyka.com.timetable.R.id.icon;

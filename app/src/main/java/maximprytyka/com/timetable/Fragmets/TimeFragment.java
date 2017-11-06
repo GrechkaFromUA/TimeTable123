@@ -89,7 +89,7 @@ public class TimeFragment extends Fragment {
         for (String counter : values) {
             Log.d("mLog", counter);
         }
-        adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_expandable_list_item_1, values);
+        adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_expandable_list_item_1, values);
         lv.setAdapter(adapter);
 
 
@@ -115,7 +115,7 @@ public class TimeFragment extends Fragment {
 
 
 
-        
+
 
 
         return v;

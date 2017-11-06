@@ -1,14 +1,9 @@
-package maximprytyka.com.timetable.Fragmets;
+package maximprytyka.com.timetable.Items;
 
 import android.app.Activity;
-import android.app.FragmentManager;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -18,13 +13,14 @@ import java.util.ArrayList;
 
 import maximprytyka.com.timetable.Animations.ZoomOut;
 import maximprytyka.com.timetable.Animations.ZoomOutBack;
+import maximprytyka.com.timetable.Fragmets.AddSubFragment;
 import maximprytyka.com.timetable.MethodHelper;
 import maximprytyka.com.timetable.R;
-import maximprytyka.com.timetable.SubjectItem;
 
 
 public class DayItem {
     ImageButton bt;
+    TextView tw;
 
 
     private int animetedBack;
@@ -50,40 +46,60 @@ public class DayItem {
 
         LinearLayout ll = (LinearLayout) li.inflate(R.layout.item_day, null, false);
 
+
         //Find and change text on TextView
         bt = (ImageButton) ll.findViewById(R.id.add_butt);
+        tw = (TextView) ll.findViewById(R.id.dayName);
 
-        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) bt.getLayoutParams();
+        LinearLayout.LayoutParams buttParams = (LinearLayout.LayoutParams) bt.getLayoutParams();
+        LinearLayout.LayoutParams textParams = (LinearLayout.LayoutParams) tw.getLayoutParams();
 
-        Animation animation;
 
-        animation = AnimationUtils.loadAnimation(activity,
-                R.anim.zoom_in);
+        String day = dayName.substring(0, 1).toUpperCase() + dayName.substring(1).toLowerCase();
+        tw.setText(day);
 
 
         if (animetedBack == 0) {
             bt.getLayoutParams().height = 0;
-            bt.setVisibility(View.VISIBLE);
+
+            if(backAnim){
+                tw.getLayoutParams().height=0;
+            }
         }
 
 
         if (animetedBack == 1) {
 
 
-
-            ZoomOut anim = new ZoomOut(bt, params.width, params.height, params.width, 0);
-
+            ZoomOut anim = new ZoomOut(bt, buttParams.width, buttParams.height, buttParams.width, 0);
             bt.setAnimation(anim);
 
+            if (backAnim) {
+
+                ZoomOut textAnim = new ZoomOut(tw, textParams.width, textParams.height, textParams.width, 0);
+
+                tw.setAnimation(textAnim);
+
+
+            }
 
         }
 
 
         if (animetedBack == 2) {
             int temp = bt.getLayoutParams().height;
-            bt.getLayoutParams().height=0;
-            ZoomOutBack zob = new ZoomOutBack(bt, params.width, 0, params.width, temp);
+            bt.getLayoutParams().height = 0;
+            ZoomOutBack zob = new ZoomOutBack(bt, buttParams.width, 0, buttParams.width, temp);
             bt.setAnimation(zob);
+
+            if (backAnim) {
+                int tmp = tw.getLayoutParams().height;
+                tw.getLayoutParams().height = 0;
+                ZoomOutBack textAnim = new ZoomOutBack(tw, textParams.width, 0, textParams.width, tmp);
+                tw.setAnimation(textAnim);
+
+            }
+
 
         }
 
@@ -98,15 +114,6 @@ public class DayItem {
             }
         });
 
-
-        TextView tw = (TextView) ll.findViewById(R.id.dayName);
-        String day = dayName.substring(0, 1).toUpperCase() + dayName.substring(1).toLowerCase();
-        tw.setText(day);
-
-
-        if (backAnim) {
-            tw.setAnimation(animation);
-        }
 
         //Find view witch contain SubjectItems
         LinearLayout view = (LinearLayout) ll.findViewById(R.id.content);
@@ -125,13 +132,10 @@ public class DayItem {
         }
 
 
+
+
         return ll;
     }
 
-
-    public void buttontozero() {
-        bt.getLayoutParams().height = 0;
-    }
-
-
 }
+
