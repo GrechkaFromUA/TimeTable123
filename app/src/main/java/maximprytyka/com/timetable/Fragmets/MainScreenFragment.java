@@ -39,6 +39,7 @@ public class MainScreenFragment extends Fragment {
         final View v = inflater.inflate(R.layout.fragment_example, container, false);
         final FragmentManager fm = getFragmentManager();
 
+        getActivity().setTitle(R.string.timetable_title);
 
         //Connect DB
         dbHelper = new DBHelper(getActivity());
@@ -212,6 +213,7 @@ public class MainScreenFragment extends Fragment {
         }
 
     }
+
 
 
 

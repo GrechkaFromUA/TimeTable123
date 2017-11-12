@@ -1,31 +1,32 @@
 package maximprytyka.com.timetable.Widget;
 
-import java.sql.Date;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 
+import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
+import android.os.Bundle;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
-import maximprytyka.com.timetable.DBHelper;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 import maximprytyka.com.timetable.R;
 
 public class Widget extends AppWidgetProvider {
+    public static String ACTION_AUTO_UPDATE_WIDGET = "ACTION_AUTO_UPDATE_WIDGET";
 
-    final String ACTION_ON_CLICK = "ru.startandroid.develop.p1211listwidget.itemonclick";
-    final static String ITEM_POSITION = "item_position";
-    SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
 
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager,
                          int[] appWidgetIds) {
         super.onUpdate(context, appWidgetManager, appWidgetIds);
+
         for (int i : appWidgetIds) {
             updateWidget(context, appWidgetManager, i);
         }
@@ -40,74 +41,59 @@ public class Widget extends AppWidgetProvider {
 
         setList(rv, context, appWidgetId);
 
-        setListClick(rv, context, appWidgetId);
+
 
 
         appWidgetManager.updateAppWidget(appWidgetId, rv);
+        appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetId,
+                R.id.lvList);
     }
 
 
     void setList(RemoteViews rv, Context context, int appWidgetId) {
+
         Intent adapter = new Intent(context, MyService.class);
         adapter.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
         rv.setRemoteAdapter(R.id.lvList, adapter);
     }
 
-    void setListClick(RemoteViews rv, Context context, int appWidgetId) {
 
-        Intent listClickIntent = new Intent(context, Widget.class);
-        listClickIntent.setAction(ACTION_ON_CLICK);
-        PendingIntent listClickPIntent = PendingIntent.getBroadcast(context, 0,
-                listClickIntent, 0);
-        rv.setPendingIntentTemplate(R.id.lvList, listClickPIntent);
 
+    @Override
+    public void onEnabled(Context context) {
+        super.onEnabled(context);
+        Intent intent = new Intent(Widget.ACTION_AUTO_UPDATE_WIDGET);
+        PendingIntent alarmIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
+
+        Calendar c = Calendar.getInstance();
+        c.set(Calendar.HOUR_OF_DAY, 12);
+        c.set(Calendar.MINUTE, 37);
+        c.set(Calendar.SECOND, 0);
+        c.set(Calendar.MILLISECOND, 1);
+
+        AlarmManager alarmMgr = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        alarmMgr.setInexactRepeating(AlarmManager.RTC, c.getTimeInMillis(), AlarmManager.INTERVAL_DAY, alarmIntent);
+    }
+
+    @Override
+    public void onDisabled(Context context) {
+        super.onDisabled(context);
+
+        Intent intent = new Intent(Widget.ACTION_AUTO_UPDATE_WIDGET);
+        AlarmManager alarmMgr = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        alarmMgr.cancel(PendingIntent.getBroadcast(context, 0, intent, 0));
     }
 
     @Override
     public void onReceive(Context context, Intent intent) {
         super.onReceive(context, intent);
-        if (intent.getAction().equalsIgnoreCase(ACTION_ON_CLICK)) {
-            int itemPos = intent.getIntExtra(ITEM_POSITION, -1);
-            if (itemPos != -1) {
-                Toast.makeText(context, "Clicked on item " + itemPos,
-                        Toast.LENGTH_SHORT).show();
-            }
+
+        if (ACTION_AUTO_UPDATE_WIDGET.equals(intent.getAction())) {
+            // do something useful here
+            Toast.makeText(context, ACTION_AUTO_UPDATE_WIDGET, Toast.LENGTH_LONG).show();
         }
     }
-
-    public ArrayList<String> getAllData(String day,Context context) {
-        String columns[] = new String[]{"time", "subject", "room", "teacher", "type", "building"};
-        ArrayList<String> data = new ArrayList<>();
-
-        for (int i = 0; i < columns.length; i++) {
-
-            for (int j = 0; j < getData(day, columns[i],context).length; j++) {
-
-                data.add(getData(day, columns[i],context)[j]);
-
-            }
-
-
-        }
-
-
-        return data;
-    }
-
-    public  String[] getData(String day, String column,Context context) {
-
-        DBHelper dbHelper = new DBHelper(context);
-        Cursor cursor = dbHelper.getReadableDatabase().rawQuery("SELECT * FROM " + day, null);
-        cursor.moveToFirst();
-        ArrayList<String> names = new ArrayList<>();
-
-
-        while (!cursor.isAfterLast()) {
-            names.add(cursor.getString(cursor.getColumnIndex(column)));
-            cursor.moveToNext();
-        }
-        cursor.close();
-        return names.toArray(new String[names.size()]);
-    }
-
 }
+
+
+

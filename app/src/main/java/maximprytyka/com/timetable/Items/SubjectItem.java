@@ -1,38 +1,22 @@
 package maximprytyka.com.timetable.Items;
 
 import android.app.Activity;
-import android.app.FragmentManager;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.provider.Settings;
-import android.support.v7.widget.CardView;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 import maximprytyka.com.timetable.DBHelper;
 import maximprytyka.com.timetable.Fragmets.AddSubFragment;
 import maximprytyka.com.timetable.Fragmets.AddSubPreferenceFragment;
 import maximprytyka.com.timetable.Fragmets.MainScreenFragment;
-import maximprytyka.com.timetable.Fragmets.TypeFragment;
 import maximprytyka.com.timetable.MethodHelper;
 import maximprytyka.com.timetable.R;
-
-import static maximprytyka.com.timetable.R.id.dayName;
-import static maximprytyka.com.timetable.R.id.icon;
-import static maximprytyka.com.timetable.R.id.visible;
-import static maximprytyka.com.timetable.R.id.wrap_content;
 
 public class SubjectItem {
 
@@ -113,13 +97,11 @@ public class SubjectItem {
         if (edit == true) {
 
             butLoy.setVisibility(LinearLayout.VISIBLE);
-            // b.setVisibility(Button.VISIBLE);
+
         } else {
             parametrs.height = 0;
             parametrs.weight = 0;
-            // b.setHeight(0);
-            // b.setWidth(0);
-            // b.setVisibility(Button.INVISIBLE);
+
         }
         butLoy.setLayoutParams(parametrs);
         butLoy.startAnimation(animation);

@@ -2,6 +2,10 @@
     <string name="admob_ind">ca-app-pub-3940256099942544/6300978111</string>
     <string name="app_name">Расписание</string>
     <string name="app_feedback">Обратная связь: maxympritika@gmail.com</string>
+    <string name="timetable_title"> Росписание </string>
+    <string name="edit_title">Редактирование</string>>
+    <string name="add_title">Добавление</string>>
+
 
 
     <string name="navigation_drawer_open">Открыть меню</string>
@@ -72,6 +76,8 @@
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
     <string name="configure">Configure</string>
-
-
+    //Alert Dialog for empty list
+    <string name="go_to">Перейти</string>
+    <string name="empty_list_title">Даний список пустой</string>
+    <string name ="description_of_empty_list">Ваш даний список пуст. Если хотите добавить больше даних в список нажмите на кнопку "Перейтиƒ"</string>>
 </resources>

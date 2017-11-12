@@ -1,6 +1,8 @@
 package maximprytyka.com.timetable;
 
 import android.app.FragmentManager;
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -32,6 +34,7 @@ import maximprytyka.com.timetable.Fragmets.TeachersFragment;
 import maximprytyka.com.timetable.Fragmets.TimeAddFragment;
 import maximprytyka.com.timetable.Fragmets.TimeFragment;
 import maximprytyka.com.timetable.Fragmets.TypeFragment;
+import maximprytyka.com.timetable.Widget.Widget;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -39,12 +42,15 @@ public class MainActivity extends AppCompatActivity
     private AdView adView;
     private SwitchCompat switcher;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        updateWidget();
 
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
 
@@ -83,6 +89,20 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();  // Always call the superclass method first
+
+        updateWidget();
+
+    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();  // Always call the superclass method first
+
+        updateWidget();
+
+    }
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -171,6 +191,21 @@ public class MainActivity extends AppCompatActivity
 
         return true;
     }
+
+
+
+
+
+    public void updateWidget(){
+        Intent intent = new Intent(this, Widget.class);
+        intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
+// Use an array and EXTRA_APPWIDGET_IDS instead of AppWidgetManager.EXTRA_APPWIDGET_ID,
+// since it seems the onUpdate() is only fired on that:
+        int[] ids = AppWidgetManager.getInstance(getApplication()).getAppWidgetIds(new ComponentName(getApplication(), Widget.class));
+        intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids);
+        sendBroadcast(intent);
+    }
+
 
 
 }

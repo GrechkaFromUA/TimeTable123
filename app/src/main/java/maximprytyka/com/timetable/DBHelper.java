@@ -22,9 +22,11 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String TABLE_SAT = "saturday";
     public static final String TABLE_SUN = "sunday";
 
+
+
     public static final String KEY_ID = "_id";
     public static final String KEY_VALUE = "value";
-    public static final String KEY_VALUE_END = "value end";
+
 
 
     public DBHelper(Context context) {
@@ -61,54 +63,6 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
-    public int getProfilesCount(String table) {
-        String countQuery = "SELECT  * FROM " + table;
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery(countQuery, null);
-        int cnt = cursor.getCount();
-        cursor.close();
-        return cnt;
-    }
-
-    public static String getNameTableByNumb(int i) {
-        String temp = null;
-
-        switch (i) {
-
-            case 1:
-                temp = TABLE_MON;
-
-                break;
-            case 2:
-                temp = TABLE_TUE;
-
-                break;
-            case 3:
-                temp = TABLE_WEN;
-
-                break;
-            case 4:
-                temp = TABLE_THU;
-
-                break;
-            case 5:
-                temp = TABLE_FRI;
-
-                break;
-            case 6:
-                temp = TABLE_SAT;
-
-                break;
-            case 7:
-                temp = TABLE_SUN;
-
-                break;
 
 
-        }
-
-
-        return temp;
-
-    }
 }

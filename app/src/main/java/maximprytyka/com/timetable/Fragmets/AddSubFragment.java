@@ -51,6 +51,12 @@ public class AddSubFragment extends Fragment {
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(edit){
+            getActivity().setTitle(R.string.edit_title);
+        }else{
+            getActivity().setTitle(R.string.add_title);
+        }
+
         View v = inflater.inflate(R.layout.fragment_content_add, container, false);
         FragmentManager fm = getFragmentManager(); //Фрагмент менеджер
         FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.fab);

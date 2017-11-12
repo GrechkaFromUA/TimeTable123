@@ -1,6 +1,5 @@
 package maximprytyka.com.timetable.Widget;
 
-import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -33,7 +32,7 @@ public class MyFactory implements RemoteViewsFactory {
 
     @Override
     public void onCreate() {
-        data = new ArrayList<String>();
+        data = new ArrayList<>();
     }
 
     @Override
@@ -53,6 +52,7 @@ public class MyFactory implements RemoteViewsFactory {
 
     @Override
     public RemoteViews getViewAt(int position) {
+
         RemoteViews rView = new RemoteViews(context.getPackageName(),
                 R.layout.item);
 
@@ -84,9 +84,7 @@ public class MyFactory implements RemoteViewsFactory {
 
 
 
-        Intent clickIntent = new Intent();
-        clickIntent.putExtra(Widget.ITEM_POSITION, position);
-        rView.setOnClickFillInIntent(R.id.sub_widget, clickIntent);
+
 
         return rView;
     }
@@ -103,7 +101,6 @@ public class MyFactory implements RemoteViewsFactory {
 
     @Override
     public void onDataSetChanged() {
-        data.clear();
         data = getAllData(getCurrentDay());
 
 
