@@ -19,7 +19,7 @@ import java.util.Date;
 import maximprytyka.com.timetable.R;
 
 public class Widget extends AppWidgetProvider {
-    public static String ACTION_AUTO_UPDATE_WIDGET = "ACTION_AUTO_UPDATE_WIDGET";
+
 
 
     @Override
@@ -59,39 +59,13 @@ public class Widget extends AppWidgetProvider {
 
 
 
-    @Override
-    public void onEnabled(Context context) {
-        super.onEnabled(context);
-        Intent intent = new Intent(Widget.ACTION_AUTO_UPDATE_WIDGET);
-        PendingIntent alarmIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
 
-        Calendar c = Calendar.getInstance();
-        c.set(Calendar.HOUR_OF_DAY, 12);
-        c.set(Calendar.MINUTE, 37);
-        c.set(Calendar.SECOND, 0);
-        c.set(Calendar.MILLISECOND, 1);
-
-        AlarmManager alarmMgr = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        alarmMgr.setInexactRepeating(AlarmManager.RTC, c.getTimeInMillis(), AlarmManager.INTERVAL_DAY, alarmIntent);
-    }
-
-    @Override
-    public void onDisabled(Context context) {
-        super.onDisabled(context);
-
-        Intent intent = new Intent(Widget.ACTION_AUTO_UPDATE_WIDGET);
-        AlarmManager alarmMgr = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        alarmMgr.cancel(PendingIntent.getBroadcast(context, 0, intent, 0));
-    }
 
     @Override
     public void onReceive(Context context, Intent intent) {
         super.onReceive(context, intent);
 
-        if (ACTION_AUTO_UPDATE_WIDGET.equals(intent.getAction())) {
-            // do something useful here
-            Toast.makeText(context, ACTION_AUTO_UPDATE_WIDGET, Toast.LENGTH_LONG).show();
-        }
+
     }
 }
 
